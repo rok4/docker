@@ -1,0 +1,81 @@
+2022-02-22 18:14:48.079933	0x00000001	info	*** DEBUT DU FONCTIONNEMENT DU LOGGER ***
+2022-02-22 18:14:48.087193	0x00000001	info	Adding global CRS CRS:84
+2022-02-22 18:14:48.088608	0x00000001	info	Adding global CRS EPSG:3857
+2022-02-22 18:14:48.088670	0x00000001	info	TMS LOADING
+2022-02-22 18:14:48.088772	0x00000001	info	Add Tile Matrix Set RGSPM06U21_2.5m from file 
+2022-02-22 18:14:48.119366	0x00000001	info	Add Tile Matrix Set LAMB93_50cm from file 
+2022-02-22 18:14:48.139246	0x00000001	info	Add Tile Matrix Set LAMB93_1m from file 
+2022-02-22 18:14:48.158674	0x00000001	info	Add Tile Matrix Set LAMB93_10cm from file 
+2022-02-22 18:14:48.175486	0x00000001	info	Add Tile Matrix Set LAMB93_IGNF from file 
+2022-02-22 18:14:48.193604	0x00000001	info	Add Tile Matrix Set RGR92UTM40S_10cm from file 
+2022-02-22 18:14:48.212948	0x00000001	info	Add Tile Matrix Set LAMB93_25cm from file 
+2022-02-22 18:14:48.231206	0x00000001	info	Add Tile Matrix Set UTM39SW84_2.5m from file 
+2022-02-22 18:14:48.252250	0x00000001	info	Add Tile Matrix Set UTM42SW84_2.5m from file 
+2022-02-22 18:14:48.272005	0x00000001	info	Add Tile Matrix Set RGM04UTM38S_1m from file 
+2022-02-22 18:14:48.290721	0x00000001	info	Add Tile Matrix Set UTM20W84MART_1M_MNT from file 
+2022-02-22 18:14:48.310215	0x00000001	info	Add Tile Matrix Set WGS84G_PO from file 
+2022-02-22 18:14:48.310797	0x00000001	info	Add Tile Matrix Set RGM04UTM38S_1M_MNT from file 
+2022-02-22 18:14:48.327143	0x00000001	info	Add Tile Matrix Set LAMB93_2.5m_EUE from file 
+2022-02-22 18:14:48.343294	0x00000001	info	Add Tile Matrix Set LAMBE_50cm from file 
+2022-02-22 18:14:48.365547	0x00000001	info	Add Tile Matrix Set RGR92UTM40S_2.5m from file 
+2022-02-22 18:14:48.381448	0x00000001	info	Add Tile Matrix Set SwissCH1903_28mm from file 
+2022-02-22 18:14:48.402545	0x00000001	info	Add Tile Matrix Set LAMB93_5cm from file 
+2022-02-22 18:14:48.419112	0x00000001	info	Add Tile Matrix Set RGSPM06U21_10cm from file 
+2022-02-22 18:14:48.434917	0x00000001	info	Add Tile Matrix Set LAMB93_25m from file 
+2022-02-22 18:14:48.450715	0x00000001	info	Add Tile Matrix Set RGR92UTM40S_12.5m from file 
+2022-02-22 18:14:48.466679	0x00000001	info	Add Tile Matrix Set LAMB93_2.5m from file 
+2022-02-22 18:14:48.483869	0x00000001	info	Add Tile Matrix Set RGNCUTM58S_2.5m from file 
+2022-02-22 18:14:48.504538	0x00000001	info	Add Tile Matrix Set UTM22RGFG95_50cm from file 
+2022-02-22 18:14:48.523374	0x00000001	info	Add Tile Matrix Set 4326 from file 
+2022-02-22 18:14:48.523752	0x00000001	info	Add Tile Matrix Set LAMB93_12.5m from file 
+2022-02-22 18:14:48.541363	0x00000001	info	Add Tile Matrix Set UTM22RGFG95_12.5m from file 
+2022-02-22 18:14:48.558692	0x00000001	info	Add Tile Matrix Set UTM01SW84_10cm from file 
+2022-02-22 18:14:48.577878	0x00000001	info	Add Tile Matrix Set LAMB93_10m from file 
+2022-02-22 18:14:48.596986	0x00000001	info	Add Tile Matrix Set RGPFUTM6S_2.5m from file 
+2022-02-22 18:14:48.615870	0x00000001	info	Add Tile Matrix Set UTM22RGFG95_2.5m from file 
+2022-02-22 18:14:48.632622	0x00000001	info	Add Tile Matrix Set UTM20W84MART_2.5m from file 
+2022-02-22 18:14:48.649667	0x00000001	info	Add Tile Matrix Set PM from file 
+2022-02-22 18:14:48.650555	0x00000001	info	Add Tile Matrix Set RGM04UTM38S_10cm from file 
+2022-02-22 18:14:48.666882	0x00000001	info	Add Tile Matrix Set RGSPM06U21_1M_MNT from file 
+2022-02-22 18:14:48.683027	0x00000001	info	Add Tile Matrix Set WGS84G from file 
+2022-02-22 18:14:48.683660	0x00000001	info	Add Tile Matrix Set UTM43SW84_2.5m from file 
+2022-02-22 18:14:48.703793	0x00000001	info	Add Tile Matrix Set PM_5cm from file 
+2022-02-22 18:14:48.704676	0x00000001	info	Add Tile Matrix Set RGR92UTM40S_50cm from file 
+2022-02-22 18:14:48.721601	0x00000001	info	Add Tile Matrix Set LAMB93 from file 
+2022-02-22 18:14:48.742496	0x00000001	info	Add Tile Matrix Set UTM22RGFG95_10cm from file 
+2022-02-22 18:14:48.759719	0x00000001	info	Add Tile Matrix Set RGR92UTM40S_1M_MNT from file 
+2022-02-22 18:14:48.776470	0x00000001	info	Add Tile Matrix Set LAMB93_1M_MNT from file 
+2022-02-22 18:14:48.792300	0x00000001	info	Add Tile Matrix Set WGS84UTM1S_10cm from file 
+2022-02-22 18:14:48.807936	0x00000001	info	Add Tile Matrix Set RGM04UTM38S_2.5m from file 
+2022-02-22 18:14:48.824906	0x00000001	info	45 TMS loaded
+2022-02-22 18:14:48.824969	0x00000001	info	STYLES LOADING
+2022-02-22 18:14:48.825057	0x00000001	info	Add style epandage from file
+2022-02-22 18:14:48.825172	0x00000001	warning	Style /styles/epandage.json not usable for broadcast
+2022-02-22 18:14:48.825189	0x00000001	error	Cannot load style /styles/epandage.json
+2022-02-22 18:14:48.825199	0x00000001	info	Add style orange from file
+2022-02-22 18:14:48.825256	0x00000001	info	Add style montagne from file
+2022-02-22 18:14:48.825335	0x00000001	warning	Style /styles/montagne.json not usable for broadcast
+2022-02-22 18:14:48.825350	0x00000001	error	Cannot load style /styles/montagne.json
+2022-02-22 18:14:48.825361	0x00000001	info	Add style style.schema from file
+2022-02-22 18:14:48.825433	0x00000001	warning	Style /styles/style.schema.json not usable for broadcast
+2022-02-22 18:14:48.825446	0x00000001	error	Cannot load style /styles/style.schema.json
+2022-02-22 18:14:48.825466	0x00000001	info	Add style inspire from file
+2022-02-22 18:14:48.825505	0x00000001	info	Add style hypso from file
+2022-02-22 18:14:48.825579	0x00000001	info	Add style aspect from file
+2022-02-22 18:14:48.825670	0x00000001	warning	Style /styles/aspect.json not usable for broadcast
+2022-02-22 18:14:48.825683	0x00000001	error	Cannot load style /styles/aspect.json
+2022-02-22 18:14:48.825693	0x00000001	info	Add style normal from file
+2022-02-22 18:14:48.825732	0x00000001	info	Add style estompage from file
+2022-02-22 18:14:48.825779	0x00000001	warning	Style /styles/estompage.json not usable for broadcast
+2022-02-22 18:14:48.825792	0x00000001	error	Cannot load style /styles/estompage.json
+2022-02-22 18:14:48.825800	0x00000001	info	4 style(s) loaded
+2022-02-22 18:14:48.825809	0x00000001	info	LAYERS LOADING
+2022-02-22 18:14:48.825840	0x00000001	info	No .json file in the directory /layers
+2022-02-22 18:14:48.825855	0x00000001	info	Server has nothing to serve...
+2022-02-22 18:14:48.825863	0x00000001	info	0 layer(s) loaded
+2022-02-22 18:14:48.825877	0x00000001	debug	Build WMS Capabilities 1.3.0
+2022-02-22 18:14:48.825953	0x00000001	warning	Liste de layers vide
+2022-02-22 18:14:48.825999	0x00000001	debug	WMS 1.3.0 fini
+2022-02-22 18:14:48.826009	0x00000001	debug	Build WMTS Capabilities
+2022-02-22 18:14:48.826054	0x00000001	debug	Build TMS Capabilities
+2022-02-22 18:14:48.826080	0x00000001	info	Listening on :9000

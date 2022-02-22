@@ -30,9 +30,8 @@ RUN apt update && apt -y install build-essential cmake git
 
 # Compilation des outils de génération
 
-ARG TAG=0.0.0
-ARG GIT_HOST=http://gitlab.forge-geoportail.ign.fr
-
+ARG TAG
+ARG GIT_HOST
 RUN git clone --branch=${TAG} --recursive --depth=1 ${GIT_HOST}/rok4/generation.git /generation
 
 RUN mkdir -p /build
@@ -52,7 +51,7 @@ RUN make -j && make install
 
 FROM base
 
-ARG TAG=0.0.0
+ARG TAG
 
 WORKDIR /
 
@@ -60,6 +59,7 @@ WORKDIR /
 COPY --from=builder /usr/local/bin/tippecanoe /bin/tippecanoe
 COPY --from=builder /build/ROK4GENERATION-${TAG}-Linux-64bit.tar.gz /
 
-RUN apt update && apt -y install procps wget gdal-bin && tar xvzf /ROK4GENERATION-${TAG}-Linux-64bit.tar.gz
+RUN apt update && apt -y install procps wget gdal-bin
+RUN tar xvzf /ROK4GENERATION-${TAG}-Linux-64bit.tar.gz --strip-components=1
 
 CMD ls -l /bin

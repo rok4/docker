@@ -14,6 +14,7 @@ RUN apt update && apt -y install git gettext \
     libturbojpeg0-dev \
     libjpeg-dev \
     libc6-dev \
+    librados-dev \
     libjson11-1-dev \
     libboost-log-dev libboost-filesystem-dev libboost-system-dev
 
@@ -27,8 +28,8 @@ RUN apt update && apt -y install build-essential cmake
 
 # Compilation des outils de génération
 
-ARG TAG=0.0.0
-ARG GIT_HOST=http://gitlab.forge-geoportail.ign.fr
+ARG TAG
+ARG GIT_HOST
 
 RUN git clone --branch=${TAG} --recursive --depth=1 ${GIT_HOST}/rok4/server.git /server
 
@@ -42,7 +43,7 @@ RUN make && make install
 
 FROM base
 
-ARG GIT_HOST=http://gitlab.forge-geoportail.ign.fr
+ARG GIT_HOST
 
 # Configuration par variables d'environnement par défaut
 ENV IMPORT_LAYERS_FROM_PYRAMIDS=""
