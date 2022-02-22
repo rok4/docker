@@ -18,4 +18,8 @@ RUN git clone --recursive --branch=${TAG} --depth=1 ${GIT_HOST}/rok4/pregenerati
 RUN cd /pregeneration && perl Makefile.PL INSTALL_BASE=/ VERSION=${TAG} && make && make injectversion && make install
 RUN rm -r /pregeneration
 
+# Déploiement des configurations
+RUN git clone ${GIT_HOST}/rok4/styles.git /styles
+RUN git clone ${GIT_HOST}/rok4/tilematrixsets.git /tilematrixsets
+
 WORKDIR /

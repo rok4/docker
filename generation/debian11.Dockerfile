@@ -52,6 +52,7 @@ RUN make -j && make install
 FROM base
 
 ARG TAG
+ARG GIT_HOST
 
 WORKDIR /
 
@@ -61,5 +62,8 @@ COPY --from=builder /build/ROK4GENERATION-${TAG}-Linux-64bit.tar.gz /
 
 RUN apt update && apt -y install procps wget gdal-bin
 RUN tar xvzf /ROK4GENERATION-${TAG}-Linux-64bit.tar.gz --strip-components=1
+
+# Déploiement des configurations
+RUN git clone ${GIT_HOST}/rok4/styles.git /styles
 
 CMD ls -l /bin
