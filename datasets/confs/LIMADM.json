@@ -1,0 +1,104 @@
+{
+   "18" : {
+      "srs" : "EPSG:2989",
+      "extent" : "690574.399999426,1592426.09999943,736126.499998242,1645659.8",
+      "db" : {
+         "user" : "ign",
+         "port" : "5432",
+         "password" : "ign",
+         "database" : "ign",
+         "host" : "fouralamo-limadm-postgis"
+      },
+      "tables" : [
+         {
+            "schema" : "public",
+            "native_name" : "departement",
+            "attributes" : "*"
+         },
+         {
+            "schema" : "public",
+            "native_name" : "arrondissement",
+            "attributes" : "*"
+         },
+         {
+            "schema" : "public",
+            "native_name" : "canton",
+            "attributes" : "*"
+         },
+         {
+            "schema" : "public",
+            "native_name" : "commune",
+            "attributes" : "*"
+         }
+      ]
+   },
+   "14" : {
+      "srs" : "EPSG:2989",
+      "extent" : "690574.399999426,1592426.09999943,736126.499998242,1645659.8",
+      "db" : {
+         "user" : "ign",
+         "port" : "5432",
+         "password" : "ign",
+         "database" : "ign",
+         "host" : "fouralamo-limadm-postgis"
+      },
+      "tables" : [
+         {
+            "schema" : "public",
+            "native_name" : "departement",
+            "attributes" : "*"
+         },
+         {
+            "schema" : "public",
+            "native_name" : "arrondissement",
+            "attributes" : "*"
+         },
+         {
+            "schema" : "public",
+            "native_name" : "canton",
+            "attributes" : "*"
+         }
+      ]
+   },
+   "12" : {
+      "srs" : "EPSG:2989",
+      "extent" : "690574.399999426,1592426.09999943,736126.499998242,1645659.8",
+      "db" : {
+         "user" : "ign",
+         "port" : "5432",
+         "password" : "ign",
+         "database" : "ign",
+         "host" : "fouralamo-limadm-postgis"
+      },
+      "tables" : [
+         {
+            "schema" : "public",
+            "native_name" : "departement",
+            "attributes" : "*"
+         },
+         {
+            "schema" : "public",
+            "native_name" : "arrondissement",
+            "attributes" : "*"
+         }
+      ]
+   },
+   "9" : {
+      "srs" : "EPSG:2989",
+      "extent" : "690574.399999426,1592426.09999943,736126.499998242,1645659.8",
+      "db" : {
+         "user" : "ign",
+         "port" : "5432",
+         "password" : "ign",
+         "database" : "ign",
+         "host" : "fouralamo-limadm-postgis"
+      },
+      "tables" : [
+         {
+            "schema" : "public",
+            "native_name" : "departement",
+            "attributes" : "*"
+         }
+      ]
+   }
+}

@@ -1,0 +1,33 @@
+[ datasource ]
+filepath_conf = /confs/BDORTHO.datasources
+
+[ pyramid ]
+pyr_data_path = /pyramids/BDORTHO
+pyr_name_new = BDORTHO
+
+; informations sur le TMS
+tms_name = PM.json
+tms_path = /etc/rok4/config/tileMatrixSet
+
+; informations relatives aux images
+compression = jpg
+
+interpolation = bicubic
+
+photometric = rgb
+sampleformat = uint
+bitspersample = 8
+samplesperpixel = 3
+
+image_width = 16
+image_height = 16
+
+; nodata
+color = 255,255,255
+
+[ process ]
+
+job_number = 2
+path_shell = /scripts
+path_temp = /tmp
+path_temp_common = /tmp

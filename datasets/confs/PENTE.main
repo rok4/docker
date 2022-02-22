@@ -1,0 +1,35 @@
+[ datasource ]
+filepath_conf = /confs/PENTE.datasources
+
+[ pyramid ]
+pyr_data_path = /pyramids/PENTE
+pyr_name_new = PENTE
+
+; informations sur le TMS
+tms_name = PM.json
+tms_path = /etc/rok4/config/tileMatrixSet
+
+; informations relatives aux images
+compression = png
+
+interpolation = bicubic
+
+photometric = rgb
+sampleformat = uint
+bitspersample = 8
+samplesperpixel = 4
+
+image_width = 16
+image_height = 16
+
+; nodata
+color = 0,0,0,0
+
+[ process ]
+
+job_number = 2
+path_shell = /scripts
+path_temp = /tmp
+path_temp_common = /tmp
+style = /etc/rok4/config/styles/montagne.json
+input_nodata = -99999
