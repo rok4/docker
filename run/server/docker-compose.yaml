@@ -7,14 +7,15 @@ services:
     links:
       - middle
     environment:
-      - ROKSERVER_PREFIX=data
+      - SERVER_PREFIX=data
     volumes:
       - ./nginx/nginx.conf.template:/etc/nginx/templates/default.conf.template
       - ./viewer:/usr/share/nginx/html/viewer
 
   middle:
-    image: rok4/rok4server:4.0.0-RC-debian11
+    image: rok4/server:${TAG}
     volumes:
+      - $PWD/logs:/rok4-logs
       - volume-limadm:/pyramids/LIMADM
       - volume-alti:/pyramids/ALTI
       - volume-ortho:/pyramids/BDORTHO
@@ -27,22 +28,22 @@ services:
       - SERVICE_TMS_ENDPOINT=http://localhost:8082/data/tms
 
   data-limadm:
-    image: rok4/dataset:geofla-martinique-4
+    image: rok4/dataset:geofla-martinique
     volumes:
       - volume-limadm:/pyramids/LIMADM
 
   data-alti:
-    image: rok4/dataset:bdalti-martinique-4
+    image: rok4/dataset:bdalti-martinique
     volumes:
       - volume-alti:/pyramids/ALTI
 
   data-pente:
-    image: rok4/dataset:pente-martinique-4
+    image: rok4/dataset:pente-martinique
     volumes:
       - volume-pente:/pyramids/PENTE
 
   data-ortho:
-    image: rok4/dataset:bdortho5m-martinique-4
+    image: rok4/dataset:bdortho5m-martinique
     volumes:
       - volume-ortho:/pyramids/BDORTHO
 

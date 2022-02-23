@@ -2,6 +2,10 @@
 
 Serveur WMS, WMTS et TMS issu du projet [ROK4](https://github.com/rok4/rok4)
 
+- [Lancement rapide](#lancement-rapide)
+- [Configuration personnalisée](#configuration-personnalisée)
+- [Lancement au sein d'une stack](#lancement-au-sein-dune-stack)
+
 ## Lancement rapide
 
 ```
@@ -80,7 +84,7 @@ Afin de tester facilement le serveur, il est possible de lancer une stack compre
 * Un serveur ROK4
 * Des jeux de données, disponible sous forme d'[images](https://hub.docker.com/r/rok4/dataset)
 
-En étant dans ce dossier, vous pouvez lancer la stack via la commande `docker-compose up`.
+En étant dans ce dossier, vous pouvez lancer la stack via la commande `TAG=<TAG> docker-compose up`.
 
 Les capacités des 3 services rendus (WMS, WMTS et TMS) sont disponibles aux URL :
 

@@ -17,4 +17,4 @@ image_height = 16
 job_number = 2
 path_shell = /scripts
 path_temp = /tmp
-path_temp_common = /tmp
+path_temp_common = /common

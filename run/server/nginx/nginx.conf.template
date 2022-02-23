@@ -1,11 +1,11 @@
-upstream rok4server { server middle:9000; }
+upstream server { server middle:9000; }
                                                
 server {
     listen 80 default_server;
 
-    location /${ROKSERVER_PREFIX} {
-        rewrite /${ROKSERVER_PREFIX}/?(.*) /$1 break;
-        fastcgi_pass rok4server;
+    location /${SERVER_PREFIX} {
+        rewrite /${SERVER_PREFIX}/?(.*) /$1 break;
+        fastcgi_pass server;
         include fastcgi_params;
         add_header 'Access-Control-Allow-Origin' '*';
     }

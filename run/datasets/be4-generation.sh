@@ -165,7 +165,7 @@ fi
 
 if [[ "$build_image" == "1" ]]; then
     echo "Compilation de l'image docker"
-    docker build -t ${image_name} -f ${dockerfile_name} pyramids/${pyr_dir_name}
+    docker build -t ${image_name} -f confs/${dockerfile_name} pyramids/${pyr_dir_name}
 fi
 
 exit 0
