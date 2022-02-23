@@ -1,0 +1,53 @@
+version: "3"
+services:
+  front:
+    image: nginx:alpine
+    ports:
+      - "8082:80"
+    links:
+      - middle
+    environment:
+      - ROKSERVER_PREFIX=data
+    volumes:
+      - ./nginx/nginx.conf.template:/etc/nginx/templates/default.conf.template
+      - ./viewer:/usr/share/nginx/html/viewer
+
+  middle:
+    image: rok4/rok4server:4.0.0-RC-debian11
+    volumes:
+      - volume-limadm:/pyramids/LIMADM
+      - volume-alti:/pyramids/ALTI
+      - volume-ortho:/pyramids/BDORTHO
+      - volume-pente:/pyramids/PENTE
+    environment:
+      - SERVER_LOGLEVEL=debug
+      - IMPORT_LAYERS_FROM_PYRAMIDS=oui
+      - SERVICE_WMTS_ENDPOINT=http://localhost:8082/data/wmts
+      - SERVICE_WMS_ENDPOINT=http://localhost:8082/data/wms
+      - SERVICE_TMS_ENDPOINT=http://localhost:8082/data/tms
+
+  data-limadm:
+    image: rok4/dataset:geofla-martinique-4
+    volumes:
+      - volume-limadm:/pyramids/LIMADM
+
+  data-alti:
+    image: rok4/dataset:bdalti-martinique-4
+    volumes:
+      - volume-alti:/pyramids/ALTI
+
+  data-pente:
+    image: rok4/dataset:pente-martinique-4
+    volumes:
+      - volume-pente:/pyramids/PENTE
+
+  data-ortho:
+    image: rok4/dataset:bdortho5m-martinique-4
+    volumes:
+      - volume-ortho:/pyramids/BDORTHO
+
+volumes:
+  volume-limadm:
+  volume-alti:
+  volume-ortho:
+  volume-pente:

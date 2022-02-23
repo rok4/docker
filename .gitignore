@@ -1,1 +1,4 @@
-datasets/data
+run/datasets/downloads
+run/datasets/scripts
+run/datasets/pyramids
+run/datasets/common

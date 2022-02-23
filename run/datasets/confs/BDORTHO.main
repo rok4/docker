@@ -7,7 +7,7 @@ pyr_name_new = BDORTHO
 
 ; informations sur le TMS
 tms_name = PM.json
-tms_path = /etc/rok4/config/tileMatrixSet
+tms_path = /tilematrixsets
 
 ; informations relatives aux images
 compression = jpg
@@ -30,4 +30,4 @@ color = 255,255,255
 job_number = 2
 path_shell = /scripts
 path_temp = /tmp
-path_temp_common = /tmp
+path_temp_common = /common

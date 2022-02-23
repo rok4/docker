@@ -4,13 +4,14 @@ set -e
 
 server="0"
 generation="0"
+tools="0"
 pregeneration="0"
 os=""
 tag=""
 git_host="http://gitlab.forge-geoportail.ign.fr"
 build_params=""
 
-ARGUMENTS="os:,server,generation,pregeneration,proxy:,help,tag:"
+ARGUMENTS="os:,server,generation,pregeneration,tools,proxy:,help,tag:"
 # read arguments
 opts=$(getopt \
     --longoptions "${ARGUMENTS}" \
@@ -30,6 +31,7 @@ while [[ $# -gt 0 ]]; do
             echo "    --server"
             echo "    --generation"
             echo "    --pregeneration"
+            echo "    --tools"
             echo "    --proxy http://proxy.chez.vous:port"
             exit 0
             ;;
@@ -51,6 +53,11 @@ while [[ $# -gt 0 ]]; do
 
         --server)
             server="1"
+            shift 1
+            ;;
+
+        --tools)
+            tools="1"
             shift 1
             ;;
 
@@ -85,7 +92,7 @@ if [[ -z $tag ]]; then
     exit 1
 fi
 
-build_params="$build_params --build-arg TAG=$tag --build-arg GIT_HOST=$git_host"
+build_params="$build_params --build-arg TAG=$tag --build-arg GIT_HOST=$git_host --build-arg CACHEBUST=\"$(date +%s)\""
 
 script_dir=$(dirname "$0")
 
@@ -102,4 +109,9 @@ fi
 ###### PREGENERATION
 if [[ "$pregeneration" == "1" ]]; then
     cd pregeneration/ && docker build -t rok4/pregeneration:${tag}-${os} -f ${os}.Dockerfile $build_params .
+fi
+
+###### TOOLS
+if [[ "$tools" == "1" ]]; then
+    cd tools/ && docker build -t rok4/tools:${tag}-${os} -f ${os}.Dockerfile $build_params .
 fi

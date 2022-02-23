@@ -5,7 +5,7 @@ FROM debian:bullseye-slim AS base
 # Installation des librairies
 
 RUN apt update && apt -y install \
-    curl \
+    curl git \
     libopenjp2-7-dev \
     zlib1g-dev \
     libtiff5-dev \
@@ -26,7 +26,7 @@ FROM base AS builder
 
 # Environnement de compilation
 
-RUN apt update && apt -y install build-essential cmake git
+RUN apt update && apt -y install build-essential cmake
 
 # Compilation des outils de génération
 

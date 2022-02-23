@@ -7,7 +7,7 @@
          "port" : "5432",
          "password" : "ign",
          "database" : "ign",
-         "host" : "fouralamo-limadm-postgis"
+         "host" : "bdd"
       },
       "tables" : [
          {
@@ -40,7 +40,7 @@
          "port" : "5432",
          "password" : "ign",
          "database" : "ign",
-         "host" : "fouralamo-limadm-postgis"
+         "host" : "bdd"
       },
       "tables" : [
          {
@@ -68,7 +68,7 @@
          "port" : "5432",
          "password" : "ign",
          "database" : "ign",
-         "host" : "fouralamo-limadm-postgis"
+         "host" : "bdd"
       },
       "tables" : [
          {
@@ -91,7 +91,7 @@
          "port" : "5432",
          "password" : "ign",
          "database" : "ign",
-         "host" : "fouralamo-limadm-postgis"
+         "host" : "bdd"
       },
       "tables" : [
          {

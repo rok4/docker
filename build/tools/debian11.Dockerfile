@@ -12,14 +12,18 @@ RUN apt update && apt -y install \
 ARG TAG
 ARG GIT_HOST
 
-RUN git clone --recursive --branch=${TAG} --depth=1 ${GIT_HOST}/rok4/pregeneration.git /pregeneration
+# Permet d'ignorer le cache en fournissant la date pour cet argument par exemple
+ARG CACHEBUST=1
 
-# Installation des outils de prégénération
-RUN cd /pregeneration && perl Makefile.PL INSTALL_BASE=/ VERSION=${TAG} && make && make injectversion && make install
-RUN rm -r /pregeneration
+RUN git clone --recursive --branch=${TAG} --depth=1 ${GIT_HOST}/rok4/tools.git /tools
+
+# Installation des outils de gestion
+RUN cd /tools && perl Makefile.PL INSTALL_BASE=/ VERSION=${TAG} && make && make injectversion && make install
+RUN rm -r /tools
 
 # Déploiement des configurations
 RUN git clone ${GIT_HOST}/rok4/styles.git /styles
 RUN git clone ${GIT_HOST}/rok4/tilematrixsets.git /tilematrixsets
+ENV ROK4_TMS_DIRECTORY=/tilematrixsets
 
 WORKDIR /

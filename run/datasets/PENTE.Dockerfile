@@ -1,5 +1,4 @@
 FROM tianon/true
-MAINTAINER Théo Satabin <theo.satabin@ign.fr>
 
 WORKDIR /
 
