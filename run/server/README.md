@@ -84,7 +84,7 @@ Afin de tester facilement le serveur, il est possible de lancer une stack compre
 * Un serveur ROK4
 * Des jeux de données, disponible sous forme d'[images](https://hub.docker.com/r/rok4/dataset)
 
-En étant dans ce dossier, vous pouvez lancer la stack via la commande `TAG=<TAG> docker-compose up`.
+En étant dans ce dossier, vous pouvez lancer la stack via la commande `TAG=<VERSION> docker-compose up`.
 
 Les capacités des 3 services rendus (WMS, WMTS et TMS) sont disponibles aux URL :
 
