@@ -1,0 +1,30 @@
+{
+    "datasources": [{
+        "top": "0",
+        "bottom": "15",
+        "source": {
+            "type": "IMAGES",
+            "directory": "/data/BDO_RVB_5M00_JP2-E100_RGAF09UTM20_D972-2017",
+            "srs": "IGNF:UTM20W84MART"
+        }
+    }],
+    "pyramid": {
+        "type": "GENERATION",
+        "name": "BDORTHO",
+        "compression": "jpg",
+        "tms": "PM.json",
+        "storage": {
+            "type": "FILE",
+            "root": "/pyramids/BDORTHO"
+        },
+        "nodata": [255, 255, 255]
+    },
+    "process": {
+        "directories": {
+            "scripts": "/scripts",
+            "local_tmp": "/tmp",
+            "shared_tmp": "/common"
+        },
+        "parallelization": 2
+    }
+}

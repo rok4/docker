@@ -1,0 +1,40 @@
+{
+    "logger": {
+        "level": "INFO",
+        "layout": "%5p : %m (%M) %n"
+    },
+    "datasources": [{
+        "top": "0",
+        "bottom": "13",
+        "source": {
+            "type": "IMAGES",
+            "directory": "/data/ALTI",
+            "srs": "IGNF:UTM20W84MART"
+        }
+    }],
+    "pyramid": {
+        "type": "GENERATION",
+        "name": "PENTE",
+        "compression": "png",
+        "tms": "PM.json",
+        "storage": {
+            "type": "FILE",
+            "root": "/pyramids/PENTE"
+        },
+        "nodata": [0, 0, 0, 0],
+        "pixel": {
+            "sampleformat": "UINT8",
+            "samplesperpixel": 4
+        }
+    },
+    "process": {
+        "directories": {
+            "scripts": "/scripts",
+            "local_tmp": "/tmp",
+            "shared_tmp": "/common"
+        },
+        "parallelization": 2,
+        "style": "/styles/montagne.json",
+        "nodata": [-99999]
+    }
+}

@@ -2,16 +2,13 @@
 
 set -e
 
-server="0"
-generation="0"
-tools="0"
-pregeneration="0"
+component=""
 os=""
 tag=""
-git_host="http://gitlab.forge-geoportail.ign.fr"
+git_host="https://github.com"
 build_params=""
 
-ARGUMENTS="os:,server,generation,pregeneration,tools,proxy:,help,tag:"
+ARGUMENTS="os:,component:,proxy:,help,tag:,git-host:"
 # read arguments
 opts=$(getopt \
     --longoptions "${ARGUMENTS}" \
@@ -28,10 +25,7 @@ while [[ $# -gt 0 ]]; do
             echo "    --os debian11"
             echo "    --tag <TAG>"
             echo "    --git-host <HOST>"
-            echo "    --server"
-            echo "    --generation"
-            echo "    --pregeneration"
-            echo "    --tools"
+            echo "    --component server|generation|pregeneration|tools"
             echo "    --proxy http://proxy.chez.vous:port"
             exit 0
             ;;
@@ -51,24 +45,9 @@ while [[ $# -gt 0 ]]; do
             shift 2
             ;;
 
-        --server)
-            server="1"
-            shift 1
-            ;;
-
-        --tools)
-            tools="1"
-            shift 1
-            ;;
-
-        --generation)
-            generation="1"
-            shift 1
-            ;;
-
-        --pregeneration)
-            pregeneration="1"
-            shift 1
+        --component)
+            component=$2
+            shift 2
             ;;
 
         --proxy)
@@ -87,6 +66,7 @@ if [[ -z $os ]]; then
     exit 1
 fi
 
+
 if [[ -z $tag ]]; then
     echo "No provided tag"
     exit 1
@@ -94,24 +74,22 @@ fi
 
 build_params="$build_params --build-arg TAG=$tag --build-arg GIT_HOST=$git_host --build-arg CACHEBUST=\"$(date +%s)\""
 
-script_dir=$(dirname "$0")
-
 ###### SERVER
-if [[ "$server" == "1" ]]; then
-    cd server/ && docker build -t rok4/server:${tag}-${os} -f ${os}.Dockerfile $build_params .
+if [[ "$component" == "server" ]]; then
+    cd server/ && docker build -t rok4/server:${tag}-${os} -f ${os}-from-git.Dockerfile $build_params .
 fi
 
 ###### GENERATION
-if [[ "$generation" == "1" ]]; then
-    cd generation/ && docker build -t rok4/generation:${tag}-${os} -f ${os}.Dockerfile $build_params .
+if [[ "$component" == "generation" ]]; then
+    cd generation/ && docker build -t rok4/generation:${tag}-${os} -f ${os}-from-git.Dockerfile $build_params .
 fi
 
 ###### PREGENERATION
-if [[ "$pregeneration" == "1" ]]; then
-    cd pregeneration/ && docker build -t rok4/pregeneration:${tag}-${os} -f ${os}.Dockerfile $build_params .
+if [[ "$component" == "pregeneration" ]]; then
+    cd pregeneration/ && docker build -t rok4/pregeneration:${tag}-${os} -f ${os}-from-git.Dockerfile $build_params .
 fi
 
 ###### TOOLS
-if [[ "$tools" == "1" ]]; then
-    cd tools/ && docker build -t rok4/tools:${tag}-${os} -f ${os}.Dockerfile $build_params .
+if [[ "$component" == "tools" ]]; then
+    cd tools/ && docker build -t rok4/tools:${tag}-${os} -f ${os}-from-git.Dockerfile $build_params .
 fi

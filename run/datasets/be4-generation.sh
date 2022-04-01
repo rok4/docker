@@ -75,7 +75,7 @@ while [[ $# -gt 0 ]]; do
             ;;
 
         --ortho)
-            conf_name="BDORTHO.main"
+            conf_name="BDORTHO.json"
             pyr_dir_name="BDORTHO"
             dockerfile_name="BDORTHO.Dockerfile"
             image_name="rok4/dataset:bdortho5m-martinique"
@@ -83,7 +83,7 @@ while [[ $# -gt 0 ]]; do
             ;;
 
         --ortho)
-            conf_name="BDORTHO.main"
+            conf_name="BDORTHO.json"
             pyr_dir_name="BDORTHO"
             dockerfile_name="BDORTHO.Dockerfile"
             image_name="rok4/dataset:bdortho5m-martinique"
@@ -91,7 +91,7 @@ while [[ $# -gt 0 ]]; do
             ;;
 
         --alti)
-            conf_name="ALTI.main"
+            conf_name="ALTI.json"
             pyr_dir_name="ALTI"
             dockerfile_name="ALTI.Dockerfile"
             image_name="rok4/dataset:bdalti-martinique"
@@ -99,7 +99,7 @@ while [[ $# -gt 0 ]]; do
             ;;
 
         --pente)
-            conf_name="PENTE.main"
+            conf_name="PENTE.json"
             pyr_dir_name="PENTE"
             dockerfile_name="PENTE.Dockerfile"
             image_name="rok4/dataset:pente-martinique"

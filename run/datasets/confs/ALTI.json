@@ -1,0 +1,31 @@
+{
+    "datasources": [{
+        "top": "0",
+        "bottom": "6",
+        "source": {
+            "type": "IMAGES",
+            "directory": "/data/ALTI",
+            "srs": "IGNF:UTM20W84MART"
+        }
+    }],
+    "pyramid": {
+        "type": "GENERATION",
+        "name": "ALTI",
+        "compression": "zip",
+        "tms": "UTM20W84MART_1M_MNT.json",
+        "storage": {
+            "type": "FILE",
+            "root": "/pyramids/ALTI"
+        },
+        "interpolation": "nn",
+        "nodata": [-99999]
+    },
+    "process": {
+        "directories": {
+            "scripts": "/scripts",
+            "local_tmp": "/tmp",
+            "shared_tmp": "/common"
+        },
+        "parallelization": 2
+    }
+}

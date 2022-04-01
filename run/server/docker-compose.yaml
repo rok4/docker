@@ -26,6 +26,11 @@ services:
       - SERVICE_WMTS_ENDPOINT=http://localhost:8082/data/wmts
       - SERVICE_WMS_ENDPOINT=http://localhost:8082/data/wms
       - SERVICE_TMS_ENDPOINT=http://localhost:8082/data/tms
+    depends_on:
+      - data-limadm
+      - data-alti
+      - data-pente
+      - data-ortho
 
   data-limadm:
     image: rok4/dataset:geofla-martinique

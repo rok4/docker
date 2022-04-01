@@ -74,7 +74,7 @@ while [[ $# -gt 0 ]]; do
             ;;
 
         --limadm)
-            conf_name="LIMADM.main"
+            conf_name="LIMADM.json"
             pyr_dir_name="LIMADM"
             sql_file="limadm.sql"
             dockerfile_name="LIMADM.Dockerfile"

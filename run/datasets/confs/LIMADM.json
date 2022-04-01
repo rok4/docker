@@ -1,104 +1,141 @@
 {
-   "18" : {
-      "srs" : "EPSG:2989",
-      "extent" : "690574.399999426,1592426.09999943,736126.499998242,1645659.8",
-      "db" : {
-         "user" : "ign",
-         "port" : "5432",
-         "password" : "ign",
-         "database" : "ign",
-         "host" : "bdd"
-      },
-      "tables" : [
-         {
-            "schema" : "public",
-            "native_name" : "departement",
-            "attributes" : "*"
-         },
-         {
-            "schema" : "public",
-            "native_name" : "arrondissement",
-            "attributes" : "*"
-         },
-         {
-            "schema" : "public",
-            "native_name" : "canton",
-            "attributes" : "*"
-         },
-         {
-            "schema" : "public",
-            "native_name" : "commune",
-            "attributes" : "*"
-         }
-      ]
-   },
-   "14" : {
-      "srs" : "EPSG:2989",
-      "extent" : "690574.399999426,1592426.09999943,736126.499998242,1645659.8",
-      "db" : {
-         "user" : "ign",
-         "port" : "5432",
-         "password" : "ign",
-         "database" : "ign",
-         "host" : "bdd"
-      },
-      "tables" : [
-         {
-            "schema" : "public",
-            "native_name" : "departement",
-            "attributes" : "*"
-         },
-         {
-            "schema" : "public",
-            "native_name" : "arrondissement",
-            "attributes" : "*"
-         },
-         {
-            "schema" : "public",
-            "native_name" : "canton",
-            "attributes" : "*"
-         }
-      ]
-   },
-   "12" : {
-      "srs" : "EPSG:2989",
-      "extent" : "690574.399999426,1592426.09999943,736126.499998242,1645659.8",
-      "db" : {
-         "user" : "ign",
-         "port" : "5432",
-         "password" : "ign",
-         "database" : "ign",
-         "host" : "bdd"
-      },
-      "tables" : [
-         {
-            "schema" : "public",
-            "native_name" : "departement",
-            "attributes" : "*"
-         },
-         {
-            "schema" : "public",
-            "native_name" : "arrondissement",
-            "attributes" : "*"
-         }
-      ]
-   },
-   "9" : {
-      "srs" : "EPSG:2989",
-      "extent" : "690574.399999426,1592426.09999943,736126.499998242,1645659.8",
-      "db" : {
-         "user" : "ign",
-         "port" : "5432",
-         "password" : "ign",
-         "database" : "ign",
-         "host" : "bdd"
-      },
-      "tables" : [
-         {
-            "schema" : "public",
-            "native_name" : "departement",
-            "attributes" : "*"
-         }
-      ]
-   }
+    "logger": {
+        "level": "DEBUG",
+        "layout": "%5p : %m (%M) %n"
+    },
+    "datasources": [{
+        "top": "15",
+        "bottom": "18",
+        "source": {
+            "type": "POSTGRESQL",
+            "area": {
+                "bbox": [690574.399999426, 1592426.09999943, 736126.499998242, 1645659.8]
+            },
+            "srs": "EPSG:2989",
+            "db": {
+                "user": "ign",
+                "password": "ign",
+                "database": "ign",
+                "host": "bdd"
+            },
+            "tables": [{
+                    "schema": "public",
+                    "native_name": "departement",
+                    "attributes": ["*"]
+                },
+                {
+                    "schema": "public",
+                    "native_name": "arrondissement",
+                    "attributes": ["*"]
+                },
+                {
+                    "schema": "public",
+                    "native_name": "canton",
+                    "attributes": ["*"]
+                },
+                {
+                    "schema": "public",
+                    "native_name": "commune",
+                    "attributes": ["*"]
+                }
+            ]
+        }
+    }, {
+        "top": "13",
+        "bottom": "14",
+        "source": {
+            "type": "POSTGRESQL",
+            "area": {
+                "bbox": [690574.399999426, 1592426.09999943, 736126.499998242, 1645659.8]
+            },
+            "srs": "EPSG:2989",
+            "db": {
+                "user": "ign",
+                "password": "ign",
+                "database": "ign",
+                "host": "bdd"
+            },
+            "tables": [{
+                    "schema": "public",
+                    "native_name": "departement",
+                    "attributes": ["*"]
+                },
+                {
+                    "schema": "public",
+                    "native_name": "arrondissement",
+                    "attributes": ["*"]
+                },
+                {
+                    "schema": "public",
+                    "native_name": "canton",
+                    "attributes": ["*"]
+                }
+            ]
+        }
+    }, {
+        "top": "10",
+        "bottom": "12",
+        "source": {
+            "type": "POSTGRESQL",
+            "area": {
+                "bbox": [690574.399999426, 1592426.09999943, 736126.499998242, 1645659.8]
+            },
+            "srs": "EPSG:2989",
+            "db": {
+                "user": "ign",
+                "password": "ign",
+                "database": "ign",
+                "host": "bdd"
+            },
+            "tables": [{
+                    "schema": "public",
+                    "native_name": "departement",
+                    "attributes": ["*"]
+                },
+                {
+                    "schema": "public",
+                    "native_name": "arrondissement",
+                    "attributes": ["*"]
+                }
+            ]
+        }
+    }, {
+        "top": "0",
+        "bottom": "9",
+        "source": {
+            "type": "POSTGRESQL",
+            "area": {
+                "bbox": [690574.399999426, 1592426.09999943, 736126.499998242, 1645659.8]
+            },
+            "srs": "EPSG:2989",
+            "db": {
+                "user": "ign",
+                "password": "ign",
+                "database": "ign",
+                "host": "bdd"
+            },
+            "tables": [{
+                "schema": "public",
+                "native_name": "departement",
+                "attributes": ["*"]
+            }]
+        }
+    }],
+    "pyramid": {
+        "type": "GENERATION",
+        "name": "LIMADM",
+        "tms": "PM.json",
+        "storage": {
+            "type": "FILE",
+            "root": "/pyramids/LIMADM"
+        }
+    },
+    "process": {
+        "directories": {
+            "scripts": "/scripts",
+            "local_tmp": "/tmp",
+            "shared_tmp": "/common"
+        },
+        "parallelization": 2
+    }
 }

@@ -31,6 +31,9 @@ RUN apt update && apt -y install build-essential cmake
 ARG TAG
 ARG GIT_HOST
 
+# Permet d'ignorer le cache en fournissant la date pour cet argument par exemple
+ARG CACHEBUST=1
+
 RUN git clone --branch=${TAG} --recursive --depth=1 ${GIT_HOST}/rok4/server.git /server
 
 RUN mkdir -p /build
