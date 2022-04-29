@@ -18,7 +18,6 @@ RUN cd /tools && perl Makefile.PL INSTALL_BASE=/ VERSION=${TAG} && make && make 
 RUN rm -r /tools
 
 # Déploiement des configurations
-RUN git clone https://github.com/rok4/styles.git /styles
 RUN git clone https://github.com/rok4/tilematrixsets.git /tilematrixsets
 ENV ROK4_TMS_DIRECTORY=/tilematrixsets
 

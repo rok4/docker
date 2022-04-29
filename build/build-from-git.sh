@@ -3,7 +3,7 @@
 set -e
 
 component=""
-os=""
+os="debian11"
 tag=""
 git_host="https://github.com"
 build_params=""
@@ -21,7 +21,7 @@ eval set --$opts
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --help)
-            echo "./build.sh <OPTIONS>"
+            echo "./build-from-git.sh <OPTIONS>"
             echo "    --os debian11"
             echo "    --tag <TAG>"
             echo "    --git-host <HOST>"
