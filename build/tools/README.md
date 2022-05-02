@@ -8,7 +8,7 @@ La documentation complète est disponible [ici](https://github.com/rok4/tools), 
 
 Cet outil convertit un descripteur de pyramide de l'ancien format (XML, extension .pyr) vers le nouveau (JSON).
 
-`docker run -v /home/ign/descriptors:/descriptors rok4/tools convert2json.pl /descriptors/pyramid.pyr`
+`docker run --rm -v /home/ign/descriptors:/descriptors rok4/tools convert2json.pl /descriptors/pyramid.pyr`
 
 Le nouveau descripteur `pyramid.json` est écrit à côté de l'ancien.
 
@@ -19,7 +19,7 @@ Cet outil supprime une pyramide à partir de son descripteur. Pour une pyramide 
 Exemple de suppression d'une pyramide fichier :
 
 ```bash
-docker run \
+docker run --rm \
     -v /home/ign/pyramids:/pyramids \
     rok4/tools \
     sup-pyr.pl --pyr file:///pyramids/bdortho.json
@@ -29,7 +29,7 @@ docker run \
 Exemple de suppression d'une pyramide S3 :
 
 ```bash
-docker run \
+docker run --rm \
     -e ROK4_S3_URL=https://s3.storage.com \
     -e ROK4_S3_KEY=key \
     -e ROK4_S3_SECRETKEY=secretkey \
@@ -43,7 +43,7 @@ docker run \
 Cet outil génère un descripteur de couche pour le serveur ROK4 à partir du descripteur de pyramide et du dossier des TileMatrixSets. La couche utilisera alors la pyramide en entrée dans sa globalité.
 
 ```bash
-docker run \
+docker run --rm \
     -e ROK4_S3_URL=https://s3.storage.com \
     -e ROK4_S3_KEY=key \
     -e ROK4_S3_SECRETKEY=secretkey \
@@ -59,7 +59,7 @@ Stockages gérés pour l'analyse des dalles : FICHIER, CEPH, S3, SWIFT
 Stockages gérés pour l'analyse des tuiles : FICHIER, SWIFT
 
 ```bash
-docker run \
+docker run --rm \
     -e ROK4_S3_URL=https://s3.storage.com \
     -e ROK4_S3_KEY=key \
     -e ROK4_S3_SECRETKEY=secretkey \
@@ -73,7 +73,7 @@ docker run \
 Ce outil permet de réaliser de nombreuses conversion entre indices de dalles, de tuiles, requêtes getTile ou getMap, liste de fichiers, géométrie WKT... grâce au TMS utilisé (ne nécessite pas de pyramide).
 
 ```bash
-docker run \
+docker run --rm \
     -v ./input:/input
     rok4/tools \
     tms-toolbox.pl --tms PM --from GEOM_FILE:/input/geom.wkt --to SLAB_INDICES --level 15 --slabsize 16x16
