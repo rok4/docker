@@ -13,9 +13,7 @@ run_generation=0
 build_image=0
 build_layer=0
 
-tag=""
-
-ARGUMENTS="image,layer,pregeneration,generation,all,limadm,help,tag:"
+ARGUMENTS="image,layer,pregeneration,generation,all,limadm,help"
 # read arguments
 opts=$(getopt \
     --longoptions "${ARGUMENTS}" \
@@ -29,7 +27,6 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         --help)
             echo "./build.sh <OPTIONS>"
-            echo "    --tag <TAG>"
             echo "    --all"
             echo "    --pregeneration"
             echo "    --generation"
@@ -38,11 +35,6 @@ while [[ $# -gt 0 ]]; do
             echo ""
             echo "    --limadm"
             exit 0
-            ;;
-
-        --tag)
-            tag=$2
-            shift 2
             ;;
 
         --pregeneration)
@@ -95,10 +87,6 @@ fi
 
 mkdir -p scripts pyramids common
 
-if [[ -z $tag ]]; then
-    tag="latest"
-fi
-
 if [[ "$run_pregeneration" == "1" || "$run_generation" == "1" ]]; then
     echo "Lancement de la BDD"
     docker network create --driver=bridge --subnet=10.210.0.0/16 fouralamo-net
@@ -129,7 +117,7 @@ if [[ "$run_pregeneration" == "1" ]]; then
         -v $PWD/pyramids:/pyramids \
         -v $PWD/scripts:/scripts \
         -v $PWD/common:/common \
-        rok4/pregeneration:${tag} \
+        rok4/pregeneration \
         4alamo.pl --conf /confs/$conf_name
 fi
 
@@ -143,7 +131,7 @@ if [[ "$run_generation" == "1" ]]; then
         -v $PWD/pyramids:/pyramids \
         -v $PWD/scripts:/scripts \
         -v $PWD/common:/common \
-        rok4/generation:${tag} \
+        rok4/generation \
         bash /scripts/main.sh 10
 fi
 
@@ -158,7 +146,7 @@ if [[ "$build_layer" == "1" ]]; then
     docker run --rm --name lay \
         --user $(id -u):$(id -g) \
         -v $PWD/pyramids:/pyramids \
-        rok4/tools:${tag} \
+        rok4/tools \
         bash -c "create-layer.pl --pyramid file:///pyramids/${pyr_dir_name}/${pyr_dir_name}.json >/pyramids/${pyr_dir_name}/${pyr_dir_name}.lay.json"
 fi
 

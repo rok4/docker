@@ -20,7 +20,6 @@ La génération complète se fait en utilisant les images `rok4/pregeneration`, 
 ### Outil
 
 * Options pour le choix des étapes de génération
-    - `--tag <TAG>` : tag des images docker à utiliser
     - `--pregeneration` : étape de génération des scripts
     - `--generation` : étape d'exécution des scripts
     - `--layer` : étape de génération du descripteur de couche
@@ -36,16 +35,15 @@ La génération complète se fait en utilisant les images `rok4/pregeneration`, 
 
 | Image de données                    | Commande à lancer                                  | Dossier de pyramide |
 | ----------------------------------- | -------------------------------------------------- | ------------------- |
-| `rok4/dataset:bdortho5m-martinique` | `bash be4-generation.sh --all --ortho --tag <TAG>` | `pyramids/BDORTHO`  |
-| `rok4/dataset:pente-martinique`     | `bash be4-generation.sh --all --alti --tag <TAG>`  | `pyramids/ALTI`     |
-| `rok4/dataset:bdalti-martinique`    | `bash be4-generation.sh --all --pente --tag <TAG>` | `pyramids/PENTE`    |
+| `rok4/dataset:bdortho5m-martinique` | `bash be4-generation.sh --all --ortho` | `pyramids/BDORTHO`  |
+| `rok4/dataset:pente-martinique`     | `bash be4-generation.sh --all --alti`  | `pyramids/ALTI`     |
+| `rok4/dataset:bdalti-martinique`    | `bash be4-generation.sh --all --pente` | `pyramids/PENTE`    |
 
 ## 4ALAMO
 
 ### Outil
 
 * Options pour le choix des étapes de génération
-    - `--tag <TAG>` : tag des images docker à utiliser
     - `--pregeneration` : étape de génération des scripts
     - `--generation` : étape d'exécution des scripts
     - `--layer` : étape de génération du descripteur de couche
@@ -59,7 +57,7 @@ La génération complète se fait en utilisant les images `rok4/pregeneration`, 
 
 | Image de données                 | Commande à lancer                                      | Dossier de pyramide |
 | -------------------------------- | ------------------------------------------------------ | ------------------- |
-| `rok4/dataset:geofla-martinique` | `bash 4alamo-generation.sh --all --limadm --tag <TAG>` | `pyramids/LIMADM`   |
+| `rok4/dataset:geofla-martinique` | `bash 4alamo-generation.sh --all --limadm` | `pyramids/LIMADM`   |
 
 
 ## Tile Matrix Sets utilisé
