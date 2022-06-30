@@ -22,7 +22,7 @@ Exemple de suppression d'une pyramide fichier :
 docker run --rm \
     -v /home/ign/pyramids:/pyramids \
     rok4/tools \
-    sup-pyr.pl --pyr file:///pyramids/bdortho.json
+    sup-pyr.pl --pyramid file:///pyramids/bdortho.json
 ```
 
 
@@ -34,7 +34,7 @@ docker run --rm \
     -e ROK4_S3_KEY=key \
     -e ROK4_S3_SECRETKEY=secretkey \
     rok4/tools \
-    sup-pyr.pl --pyr s3:///bucket_name/pyramids/bdortho.json
+    sup-pyr.pl --pyramid s3:///bucket_name/pyramids/bdortho.json
 ```
 
 

@@ -1,9 +1,7 @@
 {
     "logger": {
-        "output": "static_file",
-        "level": "${SERVER_LOGLEVEL}",
-        "file_prefix": "/rok4-logs",
-        "file_period": 3600
+        "output": "standard_output_stream_for_errors",
+        "level": "${SERVER_LOGLEVEL}"
     },
     "threads": ${SERVER_NBTHREAD},
     "port": ":9000",
@@ -14,9 +12,9 @@
         "validity": ${SERVER_CACHE_VALIDITY}
     },
     "configurations": {
-        "services": "/etc/rok4/config/services.json",
-        "layers": "/layers",
-        "styles": "/styles",
-        "tile_matrix_sets": "/tilematrixsets"
+        "services": "/etc/rok4/services.json",
+        "layers": "/etc/rok4/layers",
+        "styles": "/etc/rok4/styles",
+        "tile_matrix_sets": "/etc/rok4/tilematrixsets"
     }
 }

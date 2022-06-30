@@ -15,7 +15,6 @@ services:
   middle:
     image: rok4/server:${TAG}
     volumes:
-      - $PWD/logs:/rok4-logs
       - volume-limadm:/pyramids/LIMADM
       - volume-alti:/pyramids/ALTI
       - volume-ortho:/pyramids/BDORTHO

@@ -1,12 +1,12 @@
 # Outils de génération du projet ROK4 conteneurisés
 
-Cette suite d'outil permet la manipulation des données images (reprojection, réechantillonnage, superposition...) ainsi que la mise au format final des données (écriture des dalles des pyramides ROK4).
+Cette image contient tous les binaires permettant d'exécuter les scripts générés par les outils de pré-génération, c'est à dire :
 
-La documentation complète est disponible [ici](https://github.com/rok4/generation), avec le code source.
+* les outils permettant la manipulation des données images (reprojection, réechantillonnage, superposition...) ainsi que la mise au format final des données (écriture des dalles des pyramides ROK4). Ces outils font partie du projet, la documentation complète est disponible [ici](https://github.com/rok4/generation), avec le code source.
+* l'outil [tippecanoe](https://github.com/mapbox/tippecanoe), permettant le calcul des tuiles vectorielles
+* la suite d'outil GDAL, permettant l'extraction des données vecteur
 
-Il existe également des exemples complets d'utilisation des images de prégénération et génération [ici](https://github.com/rok4/docker/tree/master/run/datasets).
-
-## Outils
+## Outils du projets
 
 * CACHE2WORK : passage d'une dalle de pyramide raster au format de travail (détuilage et décompression)
 * CHECKWORK : contrôle de la conformité d'une image de travail aux formats gérés par les outils
@@ -18,6 +18,12 @@ Il existe également des exemples complets d'utilisation des images de prégén�
 * OVERLAYNTIFF : superposition d'images de même dimensions
 * PBF2CACHE : conditionnement de fichiers PBF en une dalle de donnée vecteur
 * WORK2CACHE : passage d'une image au format de travail à une dalle de pyramide raster (tuilage et compression)
+
+## Outils externes
+
+* TIPPECANOE
+* Suite GDAL
+* WGET
 
 ## Exemple d'appel d'une commande
 
@@ -53,3 +59,5 @@ docker run --rm \
     rok4/generation \
     bash /scripts/main.sh 10
 ```
+
+Il existe des exemples complets d'utilisation des images de prégénération et génération [ici](https://github.com/rok4/docker/tree/master/run/datasets).
