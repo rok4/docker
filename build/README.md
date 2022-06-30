@@ -13,7 +13,7 @@ Les styles et les Tile Matrix Sets sont par défaut ceux de la version 4.0. Il e
 
 Versions applicatives disponibles : https://github.com/rok4/pregeneration/releases
 
-`docker build -t rok4/pregeneration:TAG --build-arg ROK4PREGENERATION_VERSION=TAG --build-arg ROK4COREPERL_VERSION=1.0.0 -f pregeneration/debian11.Dockerfile  pregeneration/`
+`docker build -t rok4/pregeneration:TAG --build-arg ROK4PREGENERATION_VERSION=TAG --build-arg ROK4COREPERL_VERSION=TAG -f pregeneration/debian11.Dockerfile  pregeneration/`
 
 ## Compilation de l'image de génération
 
@@ -25,11 +25,11 @@ Versions applicatives disponibles : https://github.com/rok4/generation/releases
 
 Versions applicatives disponibles : https://github.com/rok4/tools/releases
 
-`docker build -t rok4/tools:TAG --build-arg ROK4TOOLS_VERSION=TAG --build-arg ROK4COREPERL_VERSION=1.0.0 -f tools/debian11.Dockerfile  tools/`
+`docker build -t rok4/tools:TAG --build-arg ROK4TOOLS_VERSION=TAG --build-arg ROK4COREPERL_VERSION=TAG -f tools/debian11.Dockerfile  tools/`
 
 ## Compilation de l'image compète de génération
 
-`docker build -t rok4/fullgeneration:TAG --build-arg ROK4PREGENERATION_VERSION=TAG --build-arg ROK4COREPERL_VERSION=1.0.0 --build-arg ROK4GENERATION_VERSION=TAG --build-arg ROK4TOOLS_VERSION=TAG -f fullgeneration/debian11.Dockerfile fullgeneration/`
+`docker build -t rok4/fullgeneration:TAG --build-arg ROK4PREGENERATION_VERSION=TAG --build-arg ROK4COREPERL_VERSION=TAG --build-arg ROK4GENERATION_VERSION=TAG --build-arg ROK4TOOLS_VERSION=TAG -f fullgeneration/debian11.Dockerfile fullgeneration/`
 
 ## Compilation de l'image du serveur de diffusion
 
