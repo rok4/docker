@@ -4,15 +4,15 @@ RUN apt update && apt -y install curl gettext
 
 ARG ROK4TILEMATRIXSETS_VERSION=4.0
 ENV ROK4TILEMATRIXSETS_VERSION=$ROK4TILEMATRIXSETS_VERSION
-RUN curl -L -o rok4-tilematrixsets.deb  https://github.com/rok4/tilematrixsets/releases/download/${ROK4TILEMATRIXSETS_VERSION}/rok4-tilematrixsets_${ROK4TILEMATRIXSETS_VERSION}_all.deb && apt install ./rok4-tilematrixsets.deb
+RUN curl -L -o rok4-tilematrixsets.deb  https://github.com/rok4/tilematrixsets/releases/download/${ROK4TILEMATRIXSETS_VERSION}/rok4-tilematrixsets-${ROK4TILEMATRIXSETS_VERSION}-linux-all.deb && apt install ./rok4-tilematrixsets.deb
 
 ARG ROK4STYLES_VERSION=4.0
 ENV ROK4STYLES_VERSION=$ROK4STYLES_VERSION
-RUN curl -L -o rok4-styles.deb  https://github.com/rok4/styles/releases/download/${ROK4STYLES_VERSION}/rok4-styles_${ROK4STYLES_VERSION}_all.deb && apt install ./rok4-styles.deb
+RUN curl -L -o rok4-styles.deb  https://github.com/rok4/styles/releases/download/${ROK4STYLES_VERSION}/rok4-styles_${ROK4STYLES_VERSION}-linux-all.deb && apt install ./rok4-styles.deb
 
 ARG ROK4SERVER_VERSION
 ENV ROK4SERVER_VERSION=$ROK4SERVER_VERSION
-RUN curl -L -o rok4-server.deb  https://github.com/rok4/server/releases/download/${ROK4SERVER_VERSION}/rok4-server_${ROK4SERVER_VERSION}_amd64.deb && apt install -y ./rok4-server.deb
+RUN curl -L -o rok4-server.deb  https://github.com/rok4/server/releases/download/${ROK4SERVER_VERSION}/rok4-server-${ROK4SERVER_VERSION}-ubuntu20.04-amd64.deb && apt install -y ./rok4-server.deb
 
 # Configuration par variables d'environnement par défaut
 ENV IMPORT_LAYERS_FROM_PYRAMIDS=""

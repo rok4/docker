@@ -1,18 +1,5 @@
 # Stacks de génération
 
-- [BE4](#be4)
-  - [Outil](#outil)
-  - [Jeux de données](#jeux-de-données)
-- [4ALAMO](#4alamo)
-  - [Outil](#outil-1)
-  - [Jeux de données](#jeux-de-données-1)
-- [Tile Matrix Sets utilisé](#tile-matrix-sets-utilisé)
-- [Détails sur les jeux de données](#détails-sur-les-jeux-de-données)
-  - [rok4/dataset:bdalti-martinique](#rok4datasetbdalti-martinique)
-  - [rok4/dataset:pente-martinique](#rok4datasetpente-martinique)
-  - [rok4/dataset:bdortho5m-martinique](#rok4datasetbdortho5m-martinique)
-  - [rok4/dataset:geofla-martinique](#rok4datasetgeofla-martinique)
-
 La génération complète se fait en utilisant les images `rok4/pregeneration`, `rok4/generation` et `rok4/tools`, disponibles sur [Docker Hub](https://hub.docker.com/r/rok4/)
 
 ## BE4

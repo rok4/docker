@@ -1,4 +1,4 @@
-# Serveur du projet ROK4 conteneurisés
+# Stacks de diffusion
 
 Le serveur permet la diffusion des données conditionnées sous forme de pyramide raster ou vecteur selon les protocoles Web Map Service, Web Map Tiled Service et Tile Map Service
 
