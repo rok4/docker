@@ -163,5 +163,10 @@ Les capacités des 3 services rendus (WMS, WMTS et TMS) sont disponibles aux URL
 * WMS : http://localhost/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0
 * WMTS : http://localhost/wmts?SERVICE=WMTS&REQUEST=GetCapabilities&VERSION=1.0.0
 * TMS : http://localhost/tms/1.0.0
+* Routes de santé : 
+  * http://localhost/healthcheck
+  * http://localhost/healthcheck/info
+  * http://localhost/healthcheck/threads
+  * http://localhost/healthcheck/depends
 
 Une stack plus complète incluant un visualisateur est disponible [ici](https://github.com/rok4/docker/tree/master/run/server).
