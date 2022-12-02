@@ -163,7 +163,7 @@ Les capacités des 3 services rendus (WMS, WMTS et TMS) sont disponibles aux URL
 * WMS : http://localhost/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0
 * WMTS : http://localhost/wmts?SERVICE=WMTS&REQUEST=GetCapabilities&VERSION=1.0.0
 * TMS : http://localhost/tms/1.0.0
-* Routes de santé : 
+* Routes de santé (à partir de la version `4.1.0`) : 
   * http://localhost/healthcheck
   * http://localhost/healthcheck/info
   * http://localhost/healthcheck/threads

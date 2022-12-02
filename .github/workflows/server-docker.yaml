@@ -1,0 +1,56 @@
+name: Build and publish server Docker image
+
+on:
+  workflow_dispatch:
+    inputs:
+      server_tag:
+        description: 'Server tagged version'
+        required: true
+      styles_tag:
+        description: 'Styles tagged version'
+        required: true
+        default: '4.0'
+      tilematrixsets_tag:
+        description: 'Tile matrix sets tagged version'
+        required: true
+        default: '4.0'
+
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: build/server/
+          push: true
+          file: build/server/debian11.Dockerfile
+          tags: |
+            rok4/server:${{ github.event.inputs.server_tag }}
+            rok4/server:lastest
+          build-args: |
+            ROK4STYLES_VERSION=${{ github.event.inputs.styles_tag }}
+            ROK4TILEMATRIXSETS_VERSION=${{ github.event.inputs.tilematrixsets_tag }}
+            ROK4SERVER_VERSION=${{ github.event.inputs.server_tag }}
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rok4/server
+          short-description: Serveur de diffusion WMS, WMTS et TMS de données raster et vecteur du projet ROK4
+          readme-filepath: run/server/README.md
