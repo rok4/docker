@@ -49,8 +49,8 @@ La génération complète se fait en utilisant les images `rok4/pregeneration`, 
 
 ## Tile Matrix Sets utilisé
 
-* [PM](https://github.com/rok4/tilematrixsets/blob/master/PM.tms)
-* [UTM20W84MART_1M_MNT](https://github.com/rok4/tilematrixsets/blob/master/UTM20W84MART_1M_MNT.tms)
+* [PM](https://github.com/rok4/tilematrixsets/blob/master/PM.json)
+* [UTM20W84MART_1M_MNT](https://github.com/rok4/tilematrixsets/blob/master/UTM20W84MART_1M_MNT.json)
 
 ## Détails sur les jeux de données
 
@@ -268,3 +268,15 @@ curl -X POST $ROK4SERVER_ENDPOINT/admin/layers/LIMADM \
 EOF
 ```
 
+### rok4/dataset:minio
+
+Cette image, ayant pour base `minio/minio`, est un styockage S3 contenant les styles, les tile matrix sets les pyramides et les descripteurs de couche. Ce stockage centralisé permet d'exploiter le fonctionnement du serveur ROK4 5.0.0.
+
+Ce stockage se lance via la commande `docker run -p 9000:9000 -p 9001:9001 rok4/dataset:minio server /data --console-address ":9001"` et une interface graphique de gestion est disponible à l'URL `http://localhost:9001/buckets` (accès : rok4 / rok4S3storage)
+
+Ce stockage contient les buckets suivants :
+
+* `styles` : tous les styles du projet ROK4
+* `tilematrixsets` : tous les tile matrix sets du projet ROK4
+* `pyramids` : les pyramides BDORTHO, ALTI et LIMADM
+* `layers` : l'objet liste `list.txt` et les descripteurs de couche BDORTHO, ALTI et LIMADM

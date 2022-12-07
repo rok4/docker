@@ -1,6 +1,6 @@
 {
     "logger": {
-        "output": "standard_output_stream_for_errors",
+        "output": "standard_output",
         "level": "${SERVER_LOGLEVEL}"
     },
     "threads": ${SERVER_NBTHREAD},
@@ -13,8 +13,8 @@
     },
     "configurations": {
         "services": "/etc/rok4/services.json",
-        "layers": "/etc/rok4/layers",
-        "styles": "/etc/rok4/styles",
-        "tile_matrix_sets": "/etc/rok4/tilematrixsets"
+        "layers": "${SERVER_LAYERS}",
+        "styles": "${SERVER_STYLES}",
+        "tile_matrix_sets": "${SERVER_TMS}"
     }
 }
