@@ -1,0 +1,37 @@
+version: "3"
+services:
+  front:
+    image: nginx:alpine
+    ports:
+      - "8082:80"
+    depends_on:
+      - middle
+    environment:
+      - SERVER_PREFIX=data
+    volumes:
+      - ./nginx/nginx.conf.template:/etc/nginx/templates/default.conf.template
+      - ./viewer:/usr/share/nginx/html/viewer
+
+  middle:
+    image: rok4/server:5.0.1
+    depends_on:
+      - storage
+    environment:
+      - SERVER_LOGLEVEL=info
+      - IMPORT_LAYERS_FROM_PYRAMIDS=non
+      - SERVICE_WMTS_ENDPOINT=http://localhost:8082/data/wmts
+      - SERVICE_WMS_ENDPOINT=http://localhost:8082/data/wms
+      - SERVICE_TMS_ENDPOINT=http://localhost:8082/data/tms
+      - ROK4_S3_SECRETKEY=rok4S3storage
+      - ROK4_S3_KEY=rok4
+      - ROK4_S3_URL=http://storage:9000
+      - SERVER_LAYERS=s3://layers/list.txt
+      - SERVER_STYLES=s3://styles
+      - SERVER_TMS=s3://tilematrixsets
+
+  storage:
+    image: rok4/dataset:minio
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"

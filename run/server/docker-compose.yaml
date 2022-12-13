@@ -13,7 +13,7 @@ services:
       - ./viewer:/usr/share/nginx/html/viewer
 
   middle:
-    image: rok4/server:${TAG}
+    image: rok4/server:4.1.0
     volumes:
       - volume-limadm:/pyramids/LIMADM
       - volume-alti:/pyramids/ALTI

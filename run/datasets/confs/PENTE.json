@@ -34,7 +34,7 @@
             "shared_tmp": "/common"
         },
         "parallelization": 2,
-        "style": "/styles/montagne.json",
+        "style": "/etc/rok4/styles/montagne.json",
         "nodata": [-99999]
     }
 }

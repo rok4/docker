@@ -20,7 +20,9 @@ Liste des variables d'environnement injectées dans les fichiers de configuratio
     * SERVER_NBTHREAD (`4`)
     * SERVER_CACHE_SIZE (`1000`)
     * SERVER_CACHE_VALIDITY (`10`)
-
+    * SERVER_LAYERS (`/etc/rok4/layers`)
+    * SERVER_STYLES (`/etc/rok4/styles`)
+    * SERVER_TMS (`/etc/rok4/tilematrixsets`)
 * `services.json`
     * SERVICE_TITLE (`WMS/WMTS/TMS server`)
     * SERVICE_ABSTRACT (`This server provide WMS, WMTS and TMS raster and vector data broadcast`)
@@ -75,7 +77,7 @@ Il est aussi possible de définir toutes les variables d'environnement dans un f
 En définissant la variable d'environnement `IMPORT_LAYERS_FROM_PYRAMIDS` à une valeur non nulle, le script de lancement du serveur copie les fichiers avec l'extension `.lay.json` trouvés dans le dossier `/pyramids` dans le dossier `/layers` (en supprimant le .lay du nom).
 
 
-## Lancement au sein d'une stack 
+## Lancement au sein d'une stack avec stockage fichier (version 4)
 
 Avec les fichiers :
 
@@ -93,7 +95,7 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
 
   middle:
-    image: rok4/server
+    image: rok4/server:4.1.0
     volumes:
       - volume-limadm:/pyramids/LIMADM
       - volume-alti:/pyramids/ALTI
@@ -169,4 +171,83 @@ Les capacités des 3 services rendus (WMS, WMTS et TMS) sont disponibles aux URL
   * http://localhost/healthcheck/threads
   * http://localhost/healthcheck/depends
 
-Une stack plus complète incluant un visualisateur est disponible [ici](https://github.com/rok4/docker/tree/master/run/server).
+Une stack plus complète incluant un visualisateur est disponible [ici](https://github.com/rok4/docker/tree/master/run/server/docker-compose.yaml).
+
+
+## Lancement au sein d'une stack avec stockage S3 (version 5)
+
+
+Avec les fichiers :
+
+* `docker-compose.yaml`
+```yaml
+version: "3"
+services:
+  front:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    links:
+      - middle
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+
+  middle:
+    image: rok4/server:5.0.1
+    depends_on:
+      - storage
+    environment:
+      - SERVER_LOGLEVEL=info
+      - IMPORT_LAYERS_FROM_PYRAMIDS=non
+      - SERVICE_WMTS_ENDPOINT=http://localhost:8082/data/wmts
+      - SERVICE_WMS_ENDPOINT=http://localhost:8082/data/wms
+      - SERVICE_TMS_ENDPOINT=http://localhost:8082/data/tms
+      - ROK4_S3_SECRETKEY=rok4S3storage
+      - ROK4_S3_KEY=rok4
+      - ROK4_S3_URL=http://storage:9000
+      - SERVER_LAYERS=s3://layers/list.txt
+      - SERVER_STYLES=s3://styles
+      - SERVER_TMS=s3://tilematrixsets
+
+  storage:
+    image: rok4/dataset:minio
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+
+```
+* Fichier `nginx.conf` :
+```
+upstream server { server middle:9000; }
+                                               
+server {
+    listen 80 default_server;
+
+    location / {
+        fastcgi_pass server;
+        include fastcgi_params;
+        add_header 'Access-Control-Allow-Origin' '*';
+    }
+}
+```
+
+Cette stack comprend :
+
+* Un front NGINX, permettant l'interrogation du serveur en HTTP, avec une configuration minimale
+* Des serveurs ROK4
+* Un stockage S3, disponible sous forme d'[image](https://hub.docker.com/r/rok4/dataset), tag `minio`
+
+Les capacités des 3 services rendus (WMS, WMTS et TMS) sont disponibles aux URL :
+
+* WMS : http://localhost/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0
+* WMTS : http://localhost/wmts?SERVICE=WMTS&REQUEST=GetCapabilities&VERSION=1.0.0
+* TMS : http://localhost/tms/1.0.0
+* Routes de santé : 
+  * http://localhost/healthcheck
+  * http://localhost/healthcheck/info
+  * http://localhost/healthcheck/threads
+  * http://localhost/healthcheck/depends
+* Interface du minio : http://localhost:9000 (accès : rok4 / rok4S3storage)
+
+Une stack plus complète incluant un visualisateur est disponible [ici](https://github.com/rok4/docker/tree/master/run/server/docker-compose-s3.yaml).
