@@ -17,15 +17,15 @@ RUN curl -L -o rok4-generation.deb  https://github.com/rok4/generation/releases/
 
 ARG ROK4COREPERL_VERSION
 ENV ROK4COREPERL_VERSION=$ROK4COREPERL_VERSION
-RUN curl -L -o librok4-core-perl.deb  https://github.com/rok4/core-perl/releases/download/${ROK4COREPERL_VERSION}/librok4-core-perl-${ROK4COREPERL_VERSION}-linux-all.deb && DEBIAN_FRONTEND=noninteractive apt install -y ./librok4-core-perl.deb
+RUN curl -L -o librok4-core-perl.deb  https://github.com/rok4/core-perl/releases/download/${ROK4COREPERL_VERSION}/librok4-core-perl-${ROK4COREPERL_VERSION}-ubuntu20.04-all.deb && DEBIAN_FRONTEND=noninteractive apt install -y ./librok4-core-perl.deb
 
 ARG ROK4PREGENERATION_VERSION
 ENV ROK4PREGENERATION_VERSION=$ROK4PREGENERATION_VERSION
-RUN curl -L -o rok4-pregeneration.deb  https://github.com/rok4/pregeneration/releases/download/${ROK4PREGENERATION_VERSION}/rok4-pregeneration-${ROK4PREGENERATION_VERSION}-linux-all.deb && apt install -y ./rok4-pregeneration.deb
+RUN curl -L -o rok4-pregeneration.deb  https://github.com/rok4/pregeneration/releases/download/${ROK4PREGENERATION_VERSION}/rok4-pregeneration-${ROK4PREGENERATION_VERSION}-ubuntu20.04-all.deb && apt install -y ./rok4-pregeneration.deb
 
 ARG ROK4TOOLS_VERSION
 ENV ROK4TOOLS_VERSION=$ROK4TOOLS_VERSION
-RUN curl -L -o rok4-tools.deb  https://github.com/rok4/tools/releases/download/${ROK4TOOLS_VERSION}/rok4-tools-${ROK4TOOLS_VERSION}-linux-all.deb && apt install -y ./rok4-tools.deb
+RUN curl -L -o rok4-tools.deb  https://github.com/rok4/tools/releases/download/${ROK4TOOLS_VERSION}/rok4-tools-${ROK4TOOLS_VERSION}-ubuntu20.04-all.deb && apt install -y ./rok4-tools.deb
 
 COPY --from=metacollin/tippecanoe:latest /usr/local/bin/tippecanoe /usr/bin/tippecanoe
 ENV TIPPECANOE_VERSION=v1.36.0
