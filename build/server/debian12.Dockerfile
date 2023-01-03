@@ -16,7 +16,7 @@ RUN curl -L -o rok4-server.deb  https://github.com/rok4/server/releases/download
 
 # Configuration par variables d'environnement par défaut
 ENV IMPORT_LAYERS_FROM_PYRAMIDS=""
-ENV SERVER_LOGLEVEL="error" SERVER_NBTHREAD="4" SERVER_CACHE_SIZE="1000" SERVER_CACHE_VALIDITY="10"
+ENV SERVER_LOGLEVEL="error" SERVER_NBTHREAD="4" SERVER_CACHE_SIZE="1000" SERVER_CACHE_VALIDITY="10" SERVER_BACKLOG="0"
 ENV SERVER_LAYERS="/etc/rok4/layers" SERVER_STYLES="/etc/rok4/styles" SERVER_TMS="/etc/rok4/tilematrixsets"
 ENV SERVICE_TITLE="WMS/WMTS/TMS server"  SERVICE_ABSTRACT="This server provide WMS, WMTS and TMS raster and vector data broadcast"  SERVICE_PROVIDERNAME="ROK4 Team" SERVICE_PROVIDERSITE="https://github.com/rok4/documentation" SERVICE_KEYWORDS="WMS,WMTS,TMS,Docker"
 ENV SERVICE_FEE="none" SERVICE_ACCESSCONSTRAINT="none"
