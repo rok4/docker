@@ -64,7 +64,12 @@ Jeux disponibles sous forme d'images Docker sur [Docker Hub](https://hub.docker.
     * Zone : Martinique
     * Tile Matrix Set : UTM20W84MART_1M_MNT
     * Niveau du bas : 6 (25m)
-    * Source des données : [Alti (250m)](https://geoservices.ign.fr/documentation/diffusion/telechargement-donnees-libres.html#bd-alti)
+    * Source des données : [Alti (25m)](https://geoservices.ign.fr/ressource/154713). Les données (format ASC) doivent être transformées en TIF pour être prise en charge par les outils de génération. Dans le dossier dézippé :
+```
+cd BDALTIV2/1_DONNEES_LIVRAISON_2020-06-00407/BDALTIV2_MNT_25M_ASC_WGS84UTM20_MART87_D972
+gdalbuildvrt BDALTIV2_2-0_25M_ASC_WGS84UTM20-MART87_D972_2015-10-21.vrt BDALTIV2_25M_MTQ_0675_1625_MNT_WGS84UTM20_MART87.asc BDALTIV2_25M_MTQ_0675_1650_MNT_WGS84UTM20_MART87.asc BDALTIV2_25M_MTQ_0700_1600_MNT_WGS84UTM20_MART87.asc BDALTIV2_25M_MTQ_0700_1625_MNT_WGS84UTM20_MART87.asc BDALTIV2_25M_MTQ_0700_1650_MNT_WGS84UTM20_MART87.asc BDALTIV2_25M_MTQ_0725_1600_MNT_WGS84UTM20_MART87.asc BDALTIV2_25M_MTQ_0725_1625_MNT_WGS84UTM20_MART87.asc BDALTIV2_25M_MTQ_0725_1650_MNT_WGS84UTM20_MART87.asc
+gdalwarp BDALTIV2_2-0_25M_ASC_WGS84UTM20-MART87_D972_2015-10-21.vrt BDALTIV2_2-0_25M_ASC_WGS84UTM20-MART87_D972_2015-10-21.tif
+```
 
 * Volume à monter : /pyramids/ALTI
 

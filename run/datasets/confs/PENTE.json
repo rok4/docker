@@ -8,7 +8,7 @@
         "bottom": "13",
         "source": {
             "type": "IMAGES",
-            "directory": "/data/ALTI",
+            "directory": "/data/BDALTIV2_2-0_25M_ASC_WGS84UTM20-MART87_D972_2015-10-21",
             "srs": "IGNF:UTM20W84MART"
         }
     }],
