@@ -6,22 +6,33 @@ La documentation complète est disponible [ici](https://github.com/rok4/server),
 
 ## Lancement rapide
 
-```sh
-docker run --publish 9000:9000 rok4/rok4server:<VERSION>-<OS>
+
+### Version 4+
+
+```
+docker run --publish 9000:9000 rok4/server:4.1.0
+```
+
+### Version 5+
+
+```
+docker run --publish 9000:9000 -e SERVER_LOGOUTPUT=standard_output rok4/server:5.0.1
 ```
 
 ## Configuration personnalisée
 
+
 Liste des variables d'environnement injectées dans les fichiers de configuration du serveur (et valeurs par défaut) :
 
 * `server.json`
-  * SERVER_LOGLEVEL (`error`)
-  * SERVER_NBTHREAD (`4`)
-  * SERVER_CACHE_SIZE (`1000`)
-  * SERVER_CACHE_VALIDITY (`10`)
-  * SERVER_LAYERS (`/etc/rok4/layers`)
-  * SERVER_STYLES (`/etc/rok4/styles`)
-  * SERVER_TMS (`/etc/rok4/tilematrixsets`)
+	* SERVER_LOGLEVEL (`error`)
+	* SERVER_LOGOUTPUT (`standard_output_stream_for_errors`, valide pour la version 4, surcharger avec `standard_output` pour la version 5)
+	* SERVER_NBTHREAD (`4`)
+	* SERVER_CACHE_SIZE (`1000`)
+	* SERVER_CACHE_VALIDITY (`10`)
+	* SERVER_LAYERS (`/etc/rok4/layers`)
+	* SERVER_STYLES (`/etc/rok4/styles`)
+	* SERVER_TMS (`/etc/rok4/tilematrixsets`)
   * SERVER_BACKLOG (`0`)
 * `services.json`
   * SERVICE_TITLE (`WMS/WMTS/TMS server`)
@@ -63,24 +74,25 @@ Liste des variables d'environnement injectées dans les fichiers de configuratio
   * SERVICE_TMS_ENDPOINT (`http://localhost/tms`)
   * SERVICE_WMS_ENDPOINT (`http://localhost/wms`)
 
+
 Il est possible de surcharger chacune de ces valeurs de configuration via des variables d'environnement. Exemple :
 
-`docker run --publish 9000:9000 -e SERVICE_TITLE='"Mon serveur ROK4"' rok4/rok4server`
+`docker run --publish 9000:9000 -e SERVICE_TITLE='"Mon serveur ROK4"' rok4/server`
 
 Afin de définir des valeurs avec des espaces (comme dans l'exemple), il faut bien encapsuler la chaîne avec des des doubles quotes et des simples.
 
 Il est aussi possible de définir toutes les variables d'environnement dans un fichier (une variable par ligne) et de faire l'appel suivant :
 
-`docker run --publish 9000:9000 --env-file=custom_env rok4/rok4server`
+`docker run --publish 9000:9000 --env-file=custom_env rok4/server`
 
 En définissant la variable d'environnement `IMPORT_LAYERS_FROM_PYRAMIDS` à une valeur non nulle, le script de lancement du serveur copie les fichiers avec l'extension `.lay.json` trouvés dans le dossier `/pyramids` dans le dossier `/layers` (en supprimant le .lay du nom).
+
 
 ## Lancement au sein d'une stack avec stockage fichier (version 4)
 
 Avec les fichiers :
 
 * `docker-compose.yaml`
-
 ```yaml
 version: "3"
 services:
@@ -138,10 +150,8 @@ volumes:
   volume-pente:
 
 ```
-
 * Fichier `nginx.conf` :
-
-```sh
+```
 upstream server { server middle:9000; }
                                                
 server {
@@ -163,23 +173,24 @@ Cette stack comprend :
 
 Les capacités des 3 services rendus (WMS, WMTS et TMS) sont disponibles aux URL :
 
-* WMS : <http://localhost/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0>
-* WMTS : <http://localhost/wmts?SERVICE=WMTS&REQUEST=GetCapabilities&VERSION=1.0.0>
-* TMS : <http://localhost/tms/1.0.0>
-* Routes de santé (à partir de la version `4.1.0`) :
-  * <http://localhost/healthcheck>
-  * <http://localhost/healthcheck/info>
-  * <http://localhost/healthcheck/threads>
-  * <http://localhost/healthcheck/depends>
+* WMS : http://localhost/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0
+* WMTS : http://localhost/wmts?SERVICE=WMTS&REQUEST=GetCapabilities&VERSION=1.0.0
+* TMS : http://localhost/tms/1.0.0
+* Routes de santé (à partir de la version `4.1.0`) : 
+  * http://localhost/healthcheck
+  * http://localhost/healthcheck/info
+  * http://localhost/healthcheck/threads
+  * http://localhost/healthcheck/depends
 
 Une stack plus complète incluant un visualisateur est disponible [ici](https://github.com/rok4/docker/tree/master/run/server/docker-compose.yaml).
 
+
 ## Lancement au sein d'une stack avec stockage S3 (version 5)
+
 
 Avec les fichiers :
 
 * `docker-compose.yaml`
-
 ```yaml
 version: "3"
 services:
@@ -205,6 +216,7 @@ services:
       - ROK4_S3_SECRETKEY=rok4S3storage
       - ROK4_S3_KEY=rok4
       - ROK4_S3_URL=http://storage:9000
+      - SERVER_LOGOUTPUT=standard_output
       - SERVER_LAYERS=s3://layers/list.txt
       - SERVER_STYLES=s3://styles
       - SERVER_TMS=s3://tilematrixsets
@@ -217,10 +229,8 @@ services:
       - "9001:9001"
 
 ```
-
 * Fichier `nginx.conf` :
-
-```sh
+```
 upstream server { server middle:9000; }
                                                
 server {
@@ -242,14 +252,14 @@ Cette stack comprend :
 
 Les capacités des 3 services rendus (WMS, WMTS et TMS) sont disponibles aux URL :
 
-* WMS : <http://localhost/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0>
-* WMTS : <http://localhost/wmts?SERVICE=WMTS&REQUEST=GetCapabilities&VERSION=1.0.0>
-* TMS : <http://localhost/tms/1.0.0>
-* Routes de santé :
-  * <http://localhost/healthcheck>
-  * <http://localhost/healthcheck/info>
-  * <http://localhost/healthcheck/threads>
-  * <http://localhost/healthcheck/depends>
-* Interface du minio : <http://localhost:9000> (accès : rok4 / rok4S3storage)
+* WMS : http://localhost/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0
+* WMTS : http://localhost/wmts?SERVICE=WMTS&REQUEST=GetCapabilities&VERSION=1.0.0
+* TMS : http://localhost/tms/1.0.0
+* Routes de santé : 
+  * http://localhost/healthcheck
+  * http://localhost/healthcheck/info
+  * http://localhost/healthcheck/threads
+  * http://localhost/healthcheck/depends
+* Interface du minio : http://localhost:9000 (accès : rok4 / rok4S3storage)
 
 Une stack plus complète incluant un visualisateur est disponible [ici](https://github.com/rok4/docker/tree/master/run/server/docker-compose-s3.yaml).

@@ -25,6 +25,7 @@ services:
       - ROK4_S3_SECRETKEY=rok4S3storage
       - ROK4_S3_KEY=rok4
       - ROK4_S3_URL=http://storage:9000
+      - SERVER_LOGOUTPUT=standard_output
       - SERVER_LAYERS=s3://layers/list.txt
       - SERVER_STYLES=s3://styles
       - SERVER_TMS=s3://tilematrixsets

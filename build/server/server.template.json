@@ -1,6 +1,6 @@
 {
     "logger": {
-        "output": "standard_output",
+        "output": "${SERVER_LOGOUTPUT}",
         "level": "${SERVER_LOGLEVEL}"
     },
     "threads": ${SERVER_NBTHREAD},
