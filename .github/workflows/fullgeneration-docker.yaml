@@ -3,7 +3,7 @@ name: Build and publish full generation Docker image
 on:
   workflow_dispatch:
     inputs:
-      server_tag:
+      generation_tag:
         description: 'Generation tools tagged version'
         required: true
       tools_tag:
@@ -44,11 +44,11 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: build/generation/
+          context: build/fullgeneration/
           push: true
-          file: build/generation/debian11.Dockerfile
+          file: build/fullgeneration/debian11.Dockerfile
           tags: |
-            rok4/generation:${{ github.event.inputs.generation_tag }}
+            rok4/generation:${{ github.event.inputs.pregeneration_tag }}
           build-args: |
             ROK4TILEMATRIXSETS_VERSION=${{ github.event.inputs.tilematrixsets_tag }}
             ROK4COREPERL_VERSION=${{ github.event.inputs.coreperl_tag }}
@@ -62,6 +62,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rok4/generation
+          repository: rok4/fullgeneration
           short-description: 'Suites de prégénération, génération et gestion du projet ROK4'
           readme-filepath: build/fullgeneration/README.md

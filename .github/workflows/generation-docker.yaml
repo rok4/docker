@@ -3,7 +3,7 @@ name: Build and publish generation Docker image
 on:
   workflow_dispatch:
     inputs:
-      server_tag:
+      generation_tag:
         description: 'Generation tools tagged version'
         required: true
       styles_tag:
