@@ -25,7 +25,7 @@ docker run --rm \
     -v $PWD/scripts:/scripts \
     -v $PWD/common:/common \
     rok4/pregeneration:${tag} \
-    be4.pl --conf /confs/
+    be4.pl --conf /confs/bdortho.json
 ```
 
 Avec les fichiers :

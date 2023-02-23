@@ -48,7 +48,7 @@ jobs:
           push: true
           file: build/fullgeneration/debian11.Dockerfile
           tags: |
-            rok4/generation:${{ github.event.inputs.pregeneration_tag }}
+            rok4/fullgeneration:${{ github.event.inputs.pregeneration_tag }}
           build-args: |
             ROK4TILEMATRIXSETS_VERSION=${{ github.event.inputs.tilematrixsets_tag }}
             ROK4COREPERL_VERSION=${{ github.event.inputs.coreperl_tag }}
