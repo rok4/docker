@@ -26,19 +26,19 @@ Liste des variables d'environnement injectées dans les fichiers de configuratio
 
 * `server.json`
 	* SERVER_LOGLEVEL (`error`)
-	* SERVER_LOGOUTPUT (`standard_output_stream_for_errors`, valide pour la version 4, surcharger avec `standard_output` pour la version 5)
+	* SERVER_LOGOUTPUT (`standard_output`, valide pour la version 5, surcharger avec `standard_output_stream_for_errors` pour la version 4)
 	* SERVER_NBTHREAD (`4`)
 	* SERVER_CACHE_SIZE (`1000`)
 	* SERVER_CACHE_VALIDITY (`10`)
-	* SERVER_LAYERS (`/etc/rok4/layers`)
-	* SERVER_STYLES (`/etc/rok4/styles`)
-	* SERVER_TMS (`/etc/rok4/tilematrixsets`)
+	* SERVER_LAYERS (`/etc/rok4/layers.txt`, valide pour la version 5, surcharger avec `/etc/rok4/layers/` pour la version 4)
+	* SERVER_STYLES (`/usr/share/rok4/styles`, valide pour la version 5, surcharger avec `/etc/rok4/layers/` pour la version 4))
+	* SERVER_TMS (`/usr/share/rok4/tilematrixsets`, valide pour la version 5, surcharger avec `/etc/rok4/layers/` pour la version 4))
   * SERVER_BACKLOG (`0`)
 * `services.json`
   * SERVICE_TITLE (`WMS/WMTS/TMS server`)
   * SERVICE_ABSTRACT (`This server provide WMS, WMTS and TMS raster and vector data broadcast`)
   * SERVICE_PROVIDERNAME (`ROK4 Team`)
-  * SERVICE_PROVIDERSITE (`https://github.com/rok4/documentation`)
+  * SERVICE_PROVIDERSITE (`https://rok4.github.io/`)
   * SERVICE_KEYWORDS (`WMS,WMTS,TMS,Docker`)
   * SERVICE_FEE (`none`)
   * SERVICE_ACCESSCONSTRAINT (`none`)
@@ -85,7 +85,7 @@ Il est aussi possible de définir toutes les variables d'environnement dans un f
 
 `docker run --publish 9000:9000 --env-file=custom_env rok4/server`
 
-En définissant la variable d'environnement `IMPORT_LAYERS_FROM_PYRAMIDS` à une valeur non nulle, le script de lancement du serveur copie les fichiers avec l'extension `.lay.json` trouvés dans le dossier `/pyramids` dans le dossier `/layers` (en supprimant le .lay du nom).
+En définissant la variable d'environnement `IMPORT_LAYERS_FROM_PYRAMIDS` à une valeur non nulle (version 4), le script de lancement du serveur copie les fichiers avec l'extension `.lay.json` trouvés dans le dossier `/pyramids` dans le dossier `/etc/rok4/layers` (en supprimant le .lay du nom).
 
 
 ## Lancement au sein d'une stack avec stockage fichier (version 4)
@@ -204,9 +204,12 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
 
   middle:
-    image: rok4/server:5.0.1
+    image: rok4/server:5.0.4
     depends_on:
       - storage
+    deploy:
+      mode: replicated
+      replicas: 2
     environment:
       - SERVER_LOGLEVEL=info
       - IMPORT_LAYERS_FROM_PYRAMIDS=non

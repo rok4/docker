@@ -33,6 +33,6 @@ Versions applicatives disponibles : https://github.com/rok4/tools/releases
 
 ## Compilation de l'image du serveur de diffusion
 
-Versions applicatives disponibles : https://github.com/rok4/server/releases
+Versions applicatives disponibles : https://github.com/rok4/server/releases et https://github.com/rok4/core-cpp/releases
 
-`docker build -t rok4/server:TAG --build-arg ROK4SERVER_VERSION=TAG -f server/debian11.Dockerfile server/`
+`docker build -t rok4/server:TAG --build-arg ROK4SERVER_VERSION=TAG --build-arg ROK4CORECPP_VERSION=tag -f server/ubuntu-2004.Dockerfile server/`

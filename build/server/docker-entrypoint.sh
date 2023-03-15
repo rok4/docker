@@ -12,7 +12,7 @@ envsubst < /etc/rok4/server.template.json > /etc/rok4/server.json
 # Setup services.json
 envsubst < /etc/rok4/services.template.json > /etc/rok4/services.json
 
-# Centralisation des descripteurs de couches
+# Centralisation des descripteurs de couches (serveur version 4)
 if [[ ! -z $IMPORT_LAYERS_FROM_PYRAMIDS ]] ; then
     for lay in $(find /pyramids/ -maxdepth 2 -name "*.lay.json"); do
         bn=$(basename -s ".lay.json" $lay)

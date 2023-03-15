@@ -4,14 +4,17 @@ on:
   workflow_dispatch:
     inputs:
       server_tag:
-        description: 'Server tagged version'
+        description: 'Server  version'
+        required: true
+      corecpp_tag:
+        description: 'C++ library version'
         required: true
       styles_tag:
-        description: 'Styles tagged version'
+        description: 'Styles version'
         required: true
         default: '4.0'
       tilematrixsets_tag:
-        description: 'Tile matrix sets tagged version'
+        description: 'Tile matrix sets version'
         required: true
         default: '4.0'
 
@@ -37,13 +40,14 @@ jobs:
         with:
           context: build/server/
           push: true
-          file: build/server/debian11.Dockerfile
+          file: build/server/ubuntu-2004.Dockerfile
           tags: |
             rok4/server:${{ github.event.inputs.server_tag }}
           build-args: |
             ROK4STYLES_VERSION=${{ github.event.inputs.styles_tag }}
             ROK4TILEMATRIXSETS_VERSION=${{ github.event.inputs.tilematrixsets_tag }}
             ROK4SERVER_VERSION=${{ github.event.inputs.server_tag }}
+            ROK4CORECPP_VERSION=${{ github.event.inputs.corecpp_tag }}
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
