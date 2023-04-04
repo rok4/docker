@@ -3,6 +3,9 @@ name: Build and publish full generation Docker image
 on:
   workflow_dispatch:
     inputs:
+      corecpp_tag:
+        description: 'C++ library version'
+        required: true
       generation_tag:
         description: 'Generation tools tagged version'
         required: true
@@ -56,6 +59,7 @@ jobs:
             ROK4STYLES_VERSION=${{ github.event.inputs.styles_tag }}
             ROK4GENERATION_VERSION=${{ github.event.inputs.generation_tag }}
             ROK4TOOLS_VERSION=${{ github.event.inputs.tools_tag }}
+            ROK4CORECPP_VERSION=${{ github.event.inputs.corecpp_tag }}
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3

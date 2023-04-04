@@ -6,6 +6,10 @@ ARG ROK4STYLES_VERSION=4.0
 ENV ROK4STYLES_VERSION=$ROK4STYLES_VERSION
 RUN curl -L -o rok4-styles.deb  https://github.com/rok4/styles/releases/download/${ROK4STYLES_VERSION}/rok4-styles-${ROK4STYLES_VERSION}-linux-all.deb && apt install ./rok4-styles.deb
 
+ARG ROK4CORECPP_VERSION
+ENV ROK4CORECPP_VERSION=$ROK4CORECPP_VERSION
+RUN curl -L -o librok4-dev.deb https://github.com/rok4/core-cpp/releases/download/${ROK4CORECPP_VERSION}/librok4-ceph-${ROK4CORECPP_VERSION}-ubuntu-22.04-amd64.deb && apt install -y ./librok4-dev.deb
+
 ARG ROK4GENERATION_VERSION
 ENV ROK4GENERATION_VERSION=$ROK4GENERATION_VERSION
 RUN curl -L -o rok4-generation.deb  https://github.com/rok4/generation/releases/download/${ROK4GENERATION_VERSION}/rok4-generation-${ROK4GENERATION_VERSION}-ubuntu-22.04-amd64.deb && apt install -y ./rok4-generation.deb
