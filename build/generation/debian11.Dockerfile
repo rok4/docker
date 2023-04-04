@@ -8,7 +8,7 @@ RUN curl -L -o rok4-styles.deb  https://github.com/rok4/styles/releases/download
 
 ARG ROK4GENERATION_VERSION
 ENV ROK4GENERATION_VERSION=$ROK4GENERATION_VERSION
-RUN curl -L -o rok4-generation.deb  https://github.com/rok4/generation/releases/download/${ROK4GENERATION_VERSION}/rok4-generation-${ROK4GENERATION_VERSION}-ubuntu20.04-amd64.deb && apt install -y ./rok4-generation.deb
+RUN curl -L -o rok4-generation.deb  https://github.com/rok4/generation/releases/download/${ROK4GENERATION_VERSION}/rok4-generation-${ROK4GENERATION_VERSION}-ubuntu-20.04-amd64.deb && apt install -y ./rok4-generation.deb
 
 COPY --from=metacollin/tippecanoe:latest /usr/local/bin/tippecanoe /usr/bin/tippecanoe
 ENV TIPPECANOE_VERSION=v1.36.0

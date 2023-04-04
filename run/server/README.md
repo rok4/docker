@@ -207,9 +207,6 @@ services:
     image: rok4/server:5.0.4
     depends_on:
       - storage
-    deploy:
-      mode: replicated
-      replicas: 2
     environment:
       - SERVER_LOGLEVEL=info
       - IMPORT_LAYERS_FROM_PYRAMIDS=non
@@ -252,6 +249,8 @@ Cette stack comprend :
 * Un front NGINX, permettant l'interrogation du serveur en HTTP, avec une configuration minimale
 * Des serveurs ROK4
 * Un stockage S3, disponible sous forme d'[image](https://hub.docker.com/r/rok4/dataset), tag `minio`
+
+Cette centralisation du stockage permet plus facilement de déployer plusieurs middle : `docker-compose -f docker-compose.yaml up --scale middle=2`
 
 Les capacités des 3 services rendus (WMS, WMTS et TMS) sont disponibles aux URL :
 
