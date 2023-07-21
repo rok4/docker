@@ -2,10 +2,10 @@ FROM ubuntu:20.04
 
 RUN apt update && apt -y install curl procps wget gdal-bin
 
-ARG ROK4TILEMATRIXSETS_VERSION=4.0
+ARG ROK4TILEMATRIXSETS_VERSION=4.1
 ENV ROK4TILEMATRIXSETS_VERSION=$ROK4TILEMATRIXSETS_VERSION
 RUN curl -L -o rok4-tilematrixsets.deb  https://github.com/rok4/tilematrixsets/releases/download/${ROK4TILEMATRIXSETS_VERSION}/rok4-tilematrixsets-${ROK4TILEMATRIXSETS_VERSION}-linux-all.deb && apt install ./rok4-tilematrixsets.deb
-ENV ROK4_TMS_DIRECTORY=/etc/rok4/tilematrixsets
+ENV ROK4_TMS_DIRECTORY=/usr/share/rok4/tilematrixsets
 
 ARG ROK4COREPERL_VERSION
 ENV ROK4COREPERL_VERSION=$ROK4COREPERL_VERSION

@@ -24,11 +24,11 @@ on:
       tilematrixsets_tag:
         description: 'Tile matrix sets tagged version'
         required: true
-        default: '4.0'
+        default: '4.1'
       styles_tag:
         description: 'Styles tagged version'
         required: true
-        default: '4.0'
+        default: '4.1'
 
 jobs:
   push_to_registry:

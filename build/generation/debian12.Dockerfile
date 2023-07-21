@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 RUN apt update && apt -y install curl procps wget gdal-bin
 
-ARG ROK4STYLES_VERSION=4.0
+ARG ROK4STYLES_VERSION=4.1
 ENV ROK4STYLES_VERSION=$ROK4STYLES_VERSION
 RUN curl -L -o rok4-styles.deb  https://github.com/rok4/styles/releases/download/${ROK4STYLES_VERSION}/rok4-styles-${ROK4STYLES_VERSION}-linux-all.deb && apt install ./rok4-styles.deb
 

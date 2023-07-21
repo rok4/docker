@@ -141,8 +141,8 @@ elif [[ $COMPONENT == "tilematrixsets" ]]; then
         git clone --branch $VERSION --depth 1 --recursive https://github.com/rok4/tilematrixsets
     fi
 
-    mkdir -p /rok4-tilematrixsets-$VERSION-linux-all/etc/rok4/tilematrixsets
-    cp /sources/tilematrixsets/*.json /rok4-tilematrixsets-$VERSION-linux-all/etc/rok4/tilematrixsets/
+    mkdir -p /rok4-tilematrixsets-$VERSION-linux-all/usr/share/rok4/tilematrixsets
+    cp /sources/tilematrixsets/*.json /rok4-tilematrixsets-$VERSION-linux-all/usr/share/rok4/tilematrixsets/
 
     tar cvfz /artefacts/rok4-tilematrixsets-$VERSION-linux-all.tar.gz -C / rok4-tilematrixsets-$VERSION-linux-all
 

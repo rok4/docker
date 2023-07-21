@@ -12,11 +12,11 @@ on:
       styles_tag:
         description: 'Styles version'
         required: true
-        default: '4.0'
+        default: '4.1'
       tilematrixsets_tag:
         description: 'Tile matrix sets version'
         required: true
-        default: '4.0'
+        default: '4.1'
 
 jobs:
   push_to_registry:
