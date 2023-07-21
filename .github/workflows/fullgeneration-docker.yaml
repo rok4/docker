@@ -3,6 +3,9 @@ name: Build and publish full generation Docker image
 on:
   workflow_dispatch:
     inputs:
+      output_image_tag:
+        description: 'Output docker image tag'
+        required: true
       corecpp_tag:
         description: 'C++ library version'
         required: true
@@ -51,7 +54,7 @@ jobs:
           push: true
           file: build/fullgeneration/debian11.Dockerfile
           tags: |
-            rok4/fullgeneration:${{ github.event.inputs.pregeneration_tag }}
+            rok4/fullgeneration:${{ github.event.inputs.output_image_tag }}
           build-args: |
             ROK4TILEMATRIXSETS_VERSION=${{ github.event.inputs.tilematrixsets_tag }}
             ROK4COREPERL_VERSION=${{ github.event.inputs.coreperl_tag }}
