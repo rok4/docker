@@ -11,7 +11,6 @@ ARG ROK4COREPERL_VERSION
 ENV ROK4COREPERL_VERSION=$ROK4COREPERL_VERSION
 RUN curl -L -o librok4-core-perl.deb  https://github.com/rok4/core-perl/releases/download/${ROK4COREPERL_VERSION}/librok4-core-perl-${ROK4COREPERL_VERSION}-ubuntu-20.04-all.deb && DEBIAN_FRONTEND=noninteractive apt install -y ./librok4-core-perl.deb && rm ./librok4-core-perl.deb
 
-COPY libnet-amazon-s3-perl_0.991-1_all.deb /libnet-amazon-s3-perl_0.991-1_all.deb
 RUN curl -L -o libnet-amazon-s3-perl_0.991-1_all.deb http://snapshot.debian.org/archive/debian/20220718T213229Z/pool/main/libn/libnet-amazon-s3-perl/libnet-amazon-s3-perl_0.991-1_all.deb && apt install -y ./libnet-amazon-s3-perl_0.991-1_all.deb && rm ./libnet-amazon-s3-perl_0.991-1_all.deb
 
 ARG ROK4PREGENERATION_VERSION

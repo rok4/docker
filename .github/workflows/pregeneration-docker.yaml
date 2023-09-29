@@ -12,7 +12,7 @@ on:
       tilematrixsets_tag:
         description: 'Tile matrix sets tagged version'
         required: true
-        default: '4.1'
+        default: '4.2'
 
 jobs:
   push_to_registry:

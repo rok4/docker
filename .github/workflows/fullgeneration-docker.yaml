@@ -24,7 +24,7 @@ on:
       tilematrixsets_tag:
         description: 'Tile matrix sets tagged version'
         required: true
-        default: '4.1'
+        default: '4.2'
       styles_tag:
         description: 'Styles tagged version'
         required: true
