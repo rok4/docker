@@ -70,9 +70,11 @@ Liste des variables d'environnement injectées dans les fichiers de configuratio
   * SERVICE_WMTSSUPPORT (`true`)
   * SERVICE_TMSSUPPORT (`true`)
   * SERVICE_WMSSUPPORT (`true`)
+  * SERVICE_OGCTILESSUPPORT (`true`)
   * SERVICE_WMTS_ENDPOINT (`http://localhost/wmts`)
   * SERVICE_TMS_ENDPOINT (`http://localhost/tms`)
   * SERVICE_WMS_ENDPOINT (`http://localhost/wms`)
+  * SERVICE_OGCTILES_ENDPOINT (`http://localhost/ogcapitiles`)
 
 
 Il est possible de surcharger chacune de ces valeurs de configuration via des variables d'environnement. Exemple :
@@ -171,11 +173,12 @@ Cette stack comprend :
 * Un serveur ROK4
 * Des jeux de données, disponible sous forme d'[images](https://hub.docker.com/r/rok4/dataset)
 
-Les capacités des 3 services rendus (WMS, WMTS et TMS) sont disponibles aux URL :
+Les capacités des 4 services rendus (WMS, WMTS, OGC API Tiles et TMS) sont disponibles aux URL :
 
 * WMS : http://localhost/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0
 * WMTS : http://localhost/wmts?SERVICE=WMTS&REQUEST=GetCapabilities&VERSION=1.0.0
 * TMS : http://localhost/tms/1.0.0
+* OGC API Tiles : http://localhost/ogcapitiles/collections
 * Routes de santé (à partir de la version `4.1.0`) : 
   * http://localhost/healthcheck
   * http://localhost/healthcheck/info
@@ -252,11 +255,12 @@ Cette stack comprend :
 
 Cette centralisation du stockage permet plus facilement de déployer plusieurs middle : `docker-compose -f docker-compose.yaml up --scale middle=2`
 
-Les capacités des 3 services rendus (WMS, WMTS et TMS) sont disponibles aux URL :
+Les capacités des 4 services rendus (WMS, WMTS, OGC API Tiles et TMS) sont disponibles aux URL :
 
 * WMS : http://localhost/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0
 * WMTS : http://localhost/wmts?SERVICE=WMTS&REQUEST=GetCapabilities&VERSION=1.0.0
 * TMS : http://localhost/tms/1.0.0
+* OGC API Tiles : http://localhost/ogcapitiles/collections
 * Routes de santé : 
   * http://localhost/healthcheck
   * http://localhost/healthcheck/info
