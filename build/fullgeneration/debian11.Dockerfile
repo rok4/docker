@@ -23,7 +23,7 @@ ARG ROK4COREPERL_VERSION
 ENV ROK4COREPERL_VERSION=$ROK4COREPERL_VERSION
 RUN curl -L -o librok4-core-perl.deb  https://github.com/rok4/core-perl/releases/download/${ROK4COREPERL_VERSION}/librok4-core-perl-${ROK4COREPERL_VERSION}-ubuntu-20.04-all.deb && DEBIAN_FRONTEND=noninteractive apt install -y ./librok4-core-perl.deb
 
-RUN curl -L -o libnet-amazon-s3-perl_0.991-1_all.deb http://snapshot.debian.org/archive/debian/20220718T213229Z/pool/main/libn/libnet-amazon-s3-perl/libnet-amazon-s3-perl_0.991-1_all.deb && apt install -y ./libnet-amazon-s3-perl_0.991-1_all.deb && rm ./libnet-amazon-s3-perl_0.991-1_all.deb
+RUN curl -L -o libnet-amazon-s3-perl_0.991-1_all.deb http://archive.ubuntu.com/ubuntu/pool/universe/libn/libnet-amazon-s3-perl/libnet-amazon-s3-perl_0.991-1_all.deb && apt install -y ./libnet-amazon-s3-perl_0.991-1_all.deb && rm ./libnet-amazon-s3-perl_0.991-1_all.deb
 
 ARG ROK4PREGENERATION_VERSION
 ENV ROK4PREGENERATION_VERSION=$ROK4PREGENERATION_VERSION
@@ -36,4 +36,4 @@ RUN curl -L -o rok4-tools.deb  https://github.com/rok4/tools/releases/download/$
 COPY --from=metacollin/tippecanoe:latest /usr/local/bin/tippecanoe /usr/bin/tippecanoe
 ENV TIPPECANOE_VERSION=v1.36.0
 
-CMD echo "ROK4:\n\t- generation: $ROK4GENERATION_VERSION\n\t- pregeneration: $ROK4PREGENERATION_VERSION\n\t- tools: $ROK4TOOLS_VERSION\n\t- core Perl: $ROK4COREPERL_VERSION\n\t- styles: $ROK4STYLES_VERSION\n\t- tile matrix sets: $ROK4TILEMATRIXSETS_VERSION\nTippecanoe: $TIPPECANOE_VERSION"
+CMD echo "ROK4:\n\t- generation: $ROK4GENERATION_VERSION\n\t- pregeneration: $ROK4PREGENERATION_VERSION\n\t- tools: $ROK4TOOLS_VERSION\n\t- core C++: $ROK4CORECPP_VERSION\n\t- core Perl: $ROK4COREPERL_VERSION\n\t- styles: $ROK4STYLES_VERSION\n\t- tile matrix sets: $ROK4TILEMATRIXSETS_VERSION\nTippecanoe: $TIPPECANOE_VERSION"

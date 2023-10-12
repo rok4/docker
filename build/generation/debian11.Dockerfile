@@ -17,4 +17,4 @@ RUN curl -L -o rok4-generation.deb  https://github.com/rok4/generation/releases/
 COPY --from=metacollin/tippecanoe:latest /usr/local/bin/tippecanoe /usr/bin/tippecanoe
 ENV TIPPECANOE_VERSION=v1.36.0
 
-CMD echo "ROK4:\n\t- generation: $ROK4GENERATION_VERSION\n\t- styles: $ROK4STYLES_VERSION\nTippecanoe: $TIPPECANOE_VERSION"
+CMD echo "ROK4:\n\t- generation: $ROK4GENERATION_VERSION- core C++: $ROK4CORECPP_VERSION\n\t\n\t- styles: $ROK4STYLES_VERSION\nTippecanoe: $TIPPECANOE_VERSION"
