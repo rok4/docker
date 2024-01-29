@@ -13,7 +13,7 @@ services:
       - ./viewer:/usr/share/nginx/html/viewer
 
   middle:
-    image: rok4/server:5.0.4
+    image: rok4/server:5.3.0
     depends_on:
       - storage
     environment:
@@ -29,6 +29,8 @@ services:
       - SERVER_LAYERS=s3://layers/list.txt
       - SERVER_STYLES=s3://styles
       - SERVER_TMS=s3://tilematrixsets
+      - SERVER_CACHE_VALIDITY=1
+      - SERVER_CACHE_SIZE=1
 
   storage:
     image: rok4/dataset:minio
