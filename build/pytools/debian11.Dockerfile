@@ -1,6 +1,6 @@
 FROM python:3.10-slim-bullseye
 
-RUN apt update && apt -y install python3-gdal python3-rados curl
+RUN apt update && apt -y install gdal-bin libgdal-dev curl g++
 
 ARG ROK4TILEMATRIXSETS_VERSION=4.3
 ENV ROK4TILEMATRIXSETS_VERSION=$ROK4TILEMATRIXSETS_VERSION
@@ -11,8 +11,7 @@ ARG ROK4PYTOOLS_VERSION
 ENV ROK4PYTOOLS_VERSION=$ROK4PYTOOLS_VERSION
 
 WORKDIR /home
-RUN python3 -m venv .venv && . .venv/bin/activate && pip install rok4-tools==$ROK4PYTOOLS_VERSION
-# RUN pip install rok4-tools==$ROK4PYTOOLS_VERSION
-RUN echo "/usr/lib/python3/dist-packages/" >>.venv/lib/python3.10/site-packages/system.pth
+RUN pip install rok4-tools==$ROK4PYTOOLS_VERSION
+RUN pip install GDAL=="$(gdal-config --version).*" && pip install gdal[numpy]=="$(gdal-config --version).*"
 
 CMD echo "ROK4:\n\t- pytools: $ROK4PYTOOLS_VERSION\n\t- tile matrix sets: $ROK4TILEMATRIXSETS_VERSION"

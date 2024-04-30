@@ -1,0 +1,50 @@
+name: Build and publish python tools Docker image
+
+on:
+  workflow_dispatch:
+    inputs:
+      pytools_tag:
+        description: 'Python tools tagged version'
+        required: true
+      tilematrixsets_tag:
+        description: 'Tile matrix sets tagged version'
+        required: true
+        default: '4.3'
+
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: build/pytools/
+          push: true
+          file: build/pytools/debian11.Dockerfile
+          tags: |
+            rok4/pytools:${{ github.event.inputs.pytools_tag }}
+          build-args: |
+            ROK4TILEMATRIXSETS_VERSION=${{ github.event.inputs.tilematrixsets_tag }}
+            ROK4PYTOOLS_VERSION=${{ github.event.inputs.pytools_tag }}
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: rok4/pytools
+          short-description: 'Outils python de gestion du projet ROK4 : conversions, calcul de statistiques...'
+          readme-filepath: build/pytools/README.md

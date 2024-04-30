@@ -2,10 +2,9 @@
 
 Le serveur permet la diffusion des données conditionnées sous forme de pyramide raster ou vecteur selon les protocoles Web Map Service, Web Map Tiled Service et Tile Map Service
 
-La documentation complète est disponible [ici](https://github.com/rok4/server), avec le code source.
+La documentation complète est disponible [ici](https://rok4.github.io/server).
 
 ## Lancement rapide
-
 
 ### Version 4+
 
@@ -16,7 +15,7 @@ docker run --publish 9000:9000 rok4/server:4.1.0
 ### Version 5+
 
 ```
-docker run --publish 9000:9000 -e SERVER_LOGOUTPUT=standard_output rok4/server:5.0.1
+docker run --publish 9000:9000 -e SERVER_LOGOUTPUT=standard_output rok4/server:5.5.0
 ```
 
 ## Configuration personnalisée
@@ -207,7 +206,7 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
 
   middle:
-    image: rok4/server:5.0.4
+    image: rok4/server:5.5.0
     depends_on:
       - storage
     environment:
