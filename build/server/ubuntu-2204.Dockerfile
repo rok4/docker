@@ -19,6 +19,7 @@ ENV ROK4SERVER_VERSION=$ROK4SERVER_VERSION
 RUN curl -L -o rok4-server.deb https://github.com/rok4/server/releases/download/${ROK4SERVER_VERSION}/rok4-server-${ROK4SERVER_VERSION}-ubuntu-22.04-amd64.deb && apt install -y ./rok4-server.deb
 
 # Configuration par variables d'environnement par défaut
+ENV ROK4_OBJECT_ATTEMPTS_WAIT=0
 ENV IMPORT_LAYERS_FROM_PYRAMIDS=""
 ENV SERVER_LOGLEVEL="error" SERVER_LOGOUTPUT="standard_output" SERVER_NBTHREAD="4" SERVER_CACHE_SIZE="1000" SERVER_CACHE_VALIDITY="10" SERVER_BACKLOG="0"
 ENV SERVER_LAYERS="/etc/rok4/layers.txt" SERVER_STYLES="/usr/share/rok4/styles" SERVER_TMS="/usr/share/rok4/tilematrixsets"
