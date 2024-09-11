@@ -81,7 +81,7 @@ curl -X POST $ROK4SERVER_ENDPOINT/admin/layers/ALTI \
 --data-binary @- << EOF
 {
    "wms" : {
-      "authorized" : true,
+      "enabled" : true,
       "crs" : [
          "IGNF:UTM20W84MART",
          "CRS:84",
@@ -92,14 +92,14 @@ curl -X POST $ROK4SERVER_ENDPOINT/admin/layers/ALTI \
       ]
    },
    "tms" : {
-      "authorized" : true
+      "enabled" : true
    },
    "keywords" : [
       "UTM20W84MART_1M_MNT",
       "RASTER"
    ],
    "wmts" : {
-      "authorized" : true
+      "enabled" : true
    },
    "pyramids" : [
       {
@@ -142,7 +142,7 @@ curl -X POST $ROK4SERVER_ENDPOINT/admin/layers/PENTE \
 --data-binary @- << EOF
 {
    "wms" : {
-      "authorized" : true,
+      "enabled" : true,
       "crs" : [
          "EPSG:3857",
          "CRS:84",
@@ -165,10 +165,10 @@ curl -X POST $ROK4SERVER_ENDPOINT/admin/layers/PENTE \
       "normal"
    ],
    "tms" : {
-      "authorized" : true
+      "enabled" : true
    },
    "wmts" : {
-      "authorized" : true
+      "enabled" : true
    },
    "keywords" : [
       "PM",
@@ -200,14 +200,14 @@ curl -X POST $ROK4SERVER_ENDPOINT/admin/layers/BDORTHO \
    "title" : "BDORTHO",
    "abstract" : "Diffusion de la donnée BDORTHO.json",
    "wmts" : {
-      "authorized" : true
+      "enabled" : true
    },
    "keywords" : [
       "PM",
       "RASTER"
    ],
    "tms" : {
-      "authorized" : true
+      "enabled" : true
    },
    "styles" : [
       "normal"
@@ -228,7 +228,7 @@ curl -X POST $ROK4SERVER_ENDPOINT/admin/layers/BDORTHO \
          "EPSG:4258",
          "EPSG:4326"
       ],
-      "authorized" : true
+      "enabled" : true
    }
 }
 EOF
@@ -254,7 +254,7 @@ curl -X POST $ROK4SERVER_ENDPOINT/admin/layers/LIMADM \
 --data-binary @- << EOF
 {
    "tms" : {
-      "authorized" : true
+      "enabled" : true
    },
    "keywords" : [
       "PM",

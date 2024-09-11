@@ -3,21 +3,19 @@ set -eu
 
 # Refactor some variable
 export SERVICE_KEYWORDS_JSON=$(echo $SERVICE_KEYWORDS | sed "s#,#\",\"#g")
-export SERVICE_FORMATLIST_JSON=$(echo $SERVICE_FORMATLIST | sed "s#,#\",\"#g")
-export SERVICE_GLOBALCRSLIST_JSON=$(echo $SERVICE_GLOBALCRSLIST | sed "s#,#\",\"#g")
 
-# Setup server.json
-envsubst < /etc/rok4/server.template.json > /etc/rok4/server.json
+# Setup server.json : if final file already exists, we don't overwrite it
+if [[ ! -f /configurations/server.json ]]; then
+    envsubst < /etc/rok4/server.template.json > /configurations/server.json
+else
+    echo "/configurations/server.json exists: we don't overwrite it"
+fi
 
-# Setup services.json
-envsubst < /etc/rok4/services.template.json > /etc/rok4/services.json
-
-# Centralisation des descripteurs de couches (serveur version 4)
-if [[ ! -z $IMPORT_LAYERS_FROM_PYRAMIDS ]] ; then
-    for lay in $(find /pyramids/ -maxdepth 2 -name "*.lay.json"); do
-        bn=$(basename -s ".lay.json" $lay)
-        cp $lay /etc/rok4/layers/$bn.json
-    done
+# Setup services.json : if final file already exists, we don't overwrite it
+if [[ ! -f /configurations/services.json ]]; then
+    envsubst < /etc/rok4/services.template.json > /configurations/services.json
+else
+    echo "/configurations/services.json exists: we don't overwrite it"
 fi
 
 exec "$@"

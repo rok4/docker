@@ -4,7 +4,7 @@ services:
     image: nginx:alpine
     ports:
       - "8082:80"
-    links:
+    depends_on:
       - middle
     environment:
       - SERVER_PREFIX=data
@@ -13,46 +13,28 @@ services:
       - ./viewer:/usr/share/nginx/html/viewer
 
   middle:
-    image: rok4/server:4.1.0
-    volumes:
-      - volume-limadm:/pyramids/LIMADM
-      - volume-alti:/pyramids/ALTI
-      - volume-ortho:/pyramids/BDORTHO
-      - volume-pente:/pyramids/PENTE
+    image: rok4/server:6.0.1
+    depends_on:
+      - storage
     environment:
-      - SERVER_LOGLEVEL=debug
-      - IMPORT_LAYERS_FROM_PYRAMIDS=oui
+      - SERVER_LOGLEVEL=info
       - SERVICE_WMTS_ENDPOINT=http://localhost:8082/data/wmts
       - SERVICE_WMS_ENDPOINT=http://localhost:8082/data/wms
       - SERVICE_TMS_ENDPOINT=http://localhost:8082/data/tms
-    depends_on:
-      - data-limadm
-      - data-alti
-      - data-pente
-      - data-ortho
+      - SERVICE_TILES_ENDPOINT=http://localhost:8082/data/tiles
+      - SERVICE_COMMON_ENDPOINT=http://localhost:8082/data/common
+      - ROK4_S3_SECRETKEY=rok4S3storage
+      - ROK4_S3_KEY=rok4
+      - ROK4_S3_URL=http://storage:9000
+      - SERVER_LAYERS=s3://layers/list.txt
+      - SERVER_STYLES=s3://styles
+      - SERVER_TMS=s3://tilematrixsets
+      - SERVER_CACHE_VALIDITY=1
+      - SERVER_CACHE_SIZE=1
 
-  data-limadm:
-    image: rok4/dataset:geofla-martinique
-    volumes:
-      - volume-limadm:/pyramids/LIMADM
-
-  data-alti:
-    image: rok4/dataset:bdalti-martinique
-    volumes:
-      - volume-alti:/pyramids/ALTI
-
-  data-pente:
-    image: rok4/dataset:pente-martinique
-    volumes:
-      - volume-pente:/pyramids/PENTE
-
-  data-ortho:
-    image: rok4/dataset:bdortho5m-martinique
-    volumes:
-      - volume-ortho:/pyramids/BDORTHO
-
-volumes:
-  volume-limadm:
-  volume-alti:
-  volume-ortho:
-  volume-pente:
+  storage:
+    image: rok4/dataset:minio
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"

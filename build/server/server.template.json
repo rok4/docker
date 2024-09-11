@@ -12,7 +12,7 @@
         "validity": ${SERVER_CACHE_VALIDITY}
     },
     "configurations": {
-        "services": "/etc/rok4/services.json",
+        "services": "/configurations/services.json",
         "layers": "${SERVER_LAYERS}",
         "styles": "${SERVER_STYLES}",
         "tile_matrix_sets": "${SERVER_TMS}"
