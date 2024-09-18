@@ -92,7 +92,7 @@ docker run --rm \
     -v $PWD/input:/input:ro \
     -v $PWD/output:/output \
     rok4/pytools \
-    tmsizer -i /input/logs.txt --tms PM -io level=15 -if GETTILE_PARAMS -of HEATMAP -oo bbox=65000,6100000,665000,6500000 -oo dimensions=600x400 -o /output/heatmap.tif
+    tmsizer -i /input/logs.txt --tms PM -io levels=15,14 -io layers=LAYER.NAME1,LAYER.NAME2,LAYER.NAME3 -if GETTILE_PARAMS -of HEATMAP -oo bbox=65000,6100000,665000,6500000 -oo dimensions=600x400 -o /output/heatmap.tif
 ```
 
 Documentation complète de l'outil [ici](https://rok4.github.io/pytools/latest/#tmsizer).
