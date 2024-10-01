@@ -12,7 +12,7 @@ on:
       styles_tag:
         description: 'Styles version'
         required: true
-        default: '4.3'
+        default: '4.4'
       tilematrixsets_tag:
         description: 'Tile matrix sets version'
         required: true

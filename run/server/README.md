@@ -27,11 +27,8 @@ Liste des variables d'environnement injectées dans les fichiers de configuratio
 	* SERVER_TMS (`/usr/share/rok4/tilematrixsets`)
   * SERVER_BACKLOG (`0`)
 * `services.json`
-  * SERVICE_TITLE (`WMS/WMTS/TMS server`)
-  * SERVICE_ABSTRACT (`This server provide WMS, WMTS and TMS raster and vector data broadcast`)
   * SERVICE_PROVIDERNAME (`ROK4 Team`)
   * SERVICE_PROVIDERSITE (`https://rok4.github.io/`)
-  * SERVICE_KEYWORDS (`WMS,WMTS,TMS,Docker`)
   * SERVICE_FEE (`none`)
   * SERVICE_ACCESSCONSTRAINT (`none`)
   * SERVICE_INDIVIDUALNAME (``)
@@ -60,7 +57,7 @@ Liste des variables d'environnement injectées dans les fichiers de configuratio
 
 Il est possible de surcharger chacune de ces valeurs de configuration via des variables d'environnement. Exemple :
 
-`docker run --publish 9000:9000 -e SERVICE_TITLE='"Mon serveur ROK4"' rok4/server`
+`docker run --publish 9000:9000 rok4/server`
 
 Afin de définir des valeurs avec des espaces (comme dans l'exemple), il faut bien encapsuler la chaîne avec des des doubles quotes et des simples.
 
@@ -91,11 +88,11 @@ services:
       - storage
     environment:
       - SERVER_LOGLEVEL=info
-      - SERVICE_WMTS_ENDPOINT=http://localhost:8082/data/wmts
-      - SERVICE_WMS_ENDPOINT=http://localhost:8082/data/wms
-      - SERVICE_TMS_ENDPOINT=http://localhost:8082/data/tms
-      - SERVICE_COMMON_ENDPOINT=http://localhost:8082/data/common
-      - SERVICE_TILES_ENDPOINT=http://localhost:8082/data/tiles
+      - SERVICE_WMTS_ENDPOINT=http://localhost/wmts
+      - SERVICE_WMS_ENDPOINT=http://localhost/wms
+      - SERVICE_TMS_ENDPOINT=http://localhost/tms
+      - SERVICE_COMMON_ENDPOINT=http://localhost/common
+      - SERVICE_TILES_ENDPOINT=http://localhost/tiles
       - ROK4_S3_SECRETKEY=rok4S3storage
       - ROK4_S3_KEY=rok4
       - ROK4_S3_URL=http://storage:9000
@@ -166,4 +163,4 @@ Des routes de santé permettent de surveiller l'activité et le contenu du serve
 
 Et les données sont consultables via l'interface du minio : http://localhost:9000 (accès : rok4 / rok4S3storage)
 
-Une stack plus complète incluant un visualisateur est disponible [ici](https://github.com/rok4/docker/tree/master/run/server/docker-compose-s3.yaml).
+Une stack plus complète incluant un visualisateur est disponible [ici](https://github.com/rok4/docker/tree/master/run/server/docker-compose.yaml).
