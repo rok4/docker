@@ -6,7 +6,7 @@ ARG ROK4TILEMATRIXSETS_VERSION=4.3
 ENV ROK4TILEMATRIXSETS_VERSION=$ROK4TILEMATRIXSETS_VERSION
 RUN curl -L -o rok4-tilematrixsets.deb  https://github.com/rok4/tilematrixsets/releases/download/${ROK4TILEMATRIXSETS_VERSION}/rok4-tilematrixsets-${ROK4TILEMATRIXSETS_VERSION}-linux-all.deb && apt install ./rok4-tilematrixsets.deb
 
-ARG ROK4STYLES_VERSION=4.1
+ARG ROK4STYLES_VERSION=4.4
 ENV ROK4STYLES_VERSION=$ROK4STYLES_VERSION
 RUN curl -L -o rok4-styles.deb  https://github.com/rok4/styles/releases/download/${ROK4STYLES_VERSION}/rok4-styles-${ROK4STYLES_VERSION}-linux-all.deb && apt install ./rok4-styles.deb
 

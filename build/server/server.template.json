@@ -6,7 +6,6 @@
     "threads": ${SERVER_NBTHREAD},
     "port": ":9000",
     "backlog": ${SERVER_BACKLOG},
-    "api": true,
     "cache": {
         "size": ${SERVER_CACHE_SIZE},
         "validity": ${SERVER_CACHE_VALIDITY}
