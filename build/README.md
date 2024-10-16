@@ -31,8 +31,14 @@ Versions applicatives disponibles : https://github.com/rok4/tools/releases
 
 `docker build -t rok4/fullgeneration:TAG --build-arg ROK4PREGENERATION_VERSION=TAG --build-arg ROK4COREPERL_VERSION=TAG --build-arg ROK4GENERATION_VERSION=TAG --build-arg ROK4TOOLS_VERSION=TAG -f fullgeneration/debian11.Dockerfile fullgeneration/`
 
+## Compilation de l'image des outils python
+
+Versions applicatives disponibles : https://github.com/rok4/pytools/releases
+
+`docker build -t rok4/pytools:TAG --build-arg ROK4PYTOOLS_VERSION=TAG -f pytools/debian11.Dockerfile pytools/`
+
 ## Compilation de l'image du serveur de diffusion
 
-Versions applicatives disponibles : https://github.com/rok4/server/releases
+Versions applicatives disponibles : https://github.com/rok4/server/releases et https://github.com/rok4/core-cpp/releases
 
-`docker build -t rok4/server:TAG --build-arg ROK4SERVER_VERSION=TAG -f server/debian11.Dockerfile server/`
+`docker build -t rok4/server:TAG --build-arg ROK4SERVER_VERSION=TAG --build-arg ROK4CORECPP_VERSION=tag -f server/ubuntu-2004.Dockerfile server/`

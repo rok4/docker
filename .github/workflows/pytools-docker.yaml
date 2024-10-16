@@ -1,18 +1,15 @@
-name: Build and publish generation Docker image
+name: Build and publish python tools Docker image
 
 on:
   workflow_dispatch:
     inputs:
-      corecpp_tag:
-        description: 'C++ library version'
+      pytools_tag:
+        description: 'Python tools tagged version'
         required: true
-      generation_tag:
-        description: 'Generation tools tagged version'
+      tilematrixsets_tag:
+        description: 'Tile matrix sets tagged version'
         required: true
-      styles_tag:
-        description: 'Styles tagged version'
-        required: true
-        default: '4.4'
+        default: '4.3'
 
 jobs:
   push_to_registry:
@@ -34,21 +31,20 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: build/generation/
+          context: build/pytools/
           push: true
-          file: build/generation/debian11.Dockerfile
+          file: build/pytools/debian11.Dockerfile
           tags: |
-            rok4/generation:${{ github.event.inputs.generation_tag }}
+            rok4/pytools:${{ github.event.inputs.pytools_tag }}
           build-args: |
-            ROK4STYLES_VERSION=${{ github.event.inputs.styles_tag }}
-            ROK4GENERATION_VERSION=${{ github.event.inputs.generation_tag }}
-            ROK4CORECPP_VERSION=${{ github.event.inputs.corecpp_tag }}
+            ROK4TILEMATRIXSETS_VERSION=${{ github.event.inputs.tilematrixsets_tag }}
+            ROK4PYTOOLS_VERSION=${{ github.event.inputs.pytools_tag }}
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: rok4/generation
-          short-description: 'Outils de génération du projet ROK4 : réechantillonnage, reprojection...'
-          readme-filepath: build/generation/README.md
+          repository: rok4/pytools
+          short-description: 'Outils python de gestion du projet ROK4 : conversions, calcul de statistiques...'
+          readme-filepath: build/pytools/README.md

@@ -2,7 +2,7 @@
 
 Cette image contient tous les binaires permettant d'exécuter les scripts générés par les outils de pré-génération, c'est à dire :
 
-* les outils permettant la manipulation des données images (reprojection, réechantillonnage, superposition...) ainsi que la mise au format final des données (écriture des dalles des pyramides ROK4). Ces outils font partie du projet, la documentation complète est disponible [ici](https://github.com/rok4/generation), avec le code source.
+* les outils permettant la manipulation des données images (reprojection, réechantillonnage, superposition...) ainsi que la mise au format final des données (écriture des dalles des pyramides ROK4). Ces outils font partie du projet, la documentation complète est disponible [ici](https://rok4.github.io/generation).
 * l'outil [tippecanoe](https://github.com/mapbox/tippecanoe), permettant le calcul des tuiles vectorielles
 * la suite d'outil GDAL, permettant l'extraction des données vecteur
 

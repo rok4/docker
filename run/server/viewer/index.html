@@ -41,24 +41,35 @@
 
             var bdortho = L.tileLayer(server + '/data/wmts?service=WMTS&request=GetTile&version=1.0.0&layer={id}&style=normal&tilematrixSet=PM&format=image%2Fjpeg&height=256&width=256&tilematrix={z}&tilerow={y}&tilecol={x}', {
                 attribution: '<a href="http://www.ign.fr">IGN</a>',
-                id: 'BDORTHO'
+                id: 'bdortho'
             }).addTo(map);
 
-            var pente = L.tileLayer(server + '/data/wmts?service=WMTS&request=GetTile&version=1.0.0&layer={id}&style=normal&tilematrixSet=PM&format=image%2Fpng&height=256&width=256&tilematrix={z}&tilerow={y}&tilecol={x}', {
+            var bdparcellaire = L.tileLayer(server + '/data/wmts?service=WMTS&request=GetTile&version=1.0.0&layer={id}&style=orange&tilematrixSet=PM&format=image%2Fpng&height=256&width=256&tilematrix={z}&tilerow={y}&tilecol={x}', {
                 attribution: '<a href="http://www.ign.fr">IGN</a>',
-                id: 'PENTE'
+                id: 'bdparcellaire'
             }).addTo(map);
+
 
             var bdaltihypso = L.tileLayer.betterWms(server + '/data/wms?', {
                 attribution: '<a href="http://www.ign.fr">IGN</a>',
                 styles: 'hypso',
                 version: '1.3.0',
-                layers: 'ALTI',
+                layers: 'alti',
                 transparent: true,
                 format: 'image/png'
             }).addTo(map);
 
-            var limadm = L.vectorGrid.protobuf(server + "/data/tms/1.0.0/LIMADM/{z}/{x}/{y}.pbf", {
+            var pente = L.tileLayer.betterWms(server + '/data/wms?', {
+                attribution: '<a href="http://www.ign.fr">IGN</a>',
+                styles: 'montagne_palette',
+                version: '1.3.0',
+                layers: 'pente',
+                transparent: true,
+                format: 'image/png'
+            }).addTo(map);
+
+
+            var limadm = L.vectorGrid.protobuf(server + "/data/tms/1.0.0/limadm/{z}/{x}/{y}.pbf", {
                 vectorTileLayerStyles: {
                     departement: {
                         weight: 8,
@@ -87,6 +98,7 @@
                 },
                 {
                     "Carte des pentes": pente,
+                    "Parcelles cadastrales": bdparcellaire,
                     "Limites administratives": limadm
                 }
             ).addTo(map);

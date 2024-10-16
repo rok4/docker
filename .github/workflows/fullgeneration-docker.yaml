@@ -3,6 +3,12 @@ name: Build and publish full generation Docker image
 on:
   workflow_dispatch:
     inputs:
+      output_image_tag:
+        description: 'Output docker image tag'
+        required: true
+      corecpp_tag:
+        description: 'C++ library version'
+        required: true
       generation_tag:
         description: 'Generation tools tagged version'
         required: true
@@ -18,11 +24,11 @@ on:
       tilematrixsets_tag:
         description: 'Tile matrix sets tagged version'
         required: true
-        default: '4.0'
+        default: '4.3'
       styles_tag:
         description: 'Styles tagged version'
         required: true
-        default: '4.0'
+        default: '4.4'
 
 jobs:
   push_to_registry:
@@ -48,7 +54,7 @@ jobs:
           push: true
           file: build/fullgeneration/debian11.Dockerfile
           tags: |
-            rok4/fullgeneration:${{ github.event.inputs.pregeneration_tag }}
+            rok4/fullgeneration:${{ github.event.inputs.output_image_tag }}
           build-args: |
             ROK4TILEMATRIXSETS_VERSION=${{ github.event.inputs.tilematrixsets_tag }}
             ROK4COREPERL_VERSION=${{ github.event.inputs.coreperl_tag }}
@@ -56,6 +62,7 @@ jobs:
             ROK4STYLES_VERSION=${{ github.event.inputs.styles_tag }}
             ROK4GENERATION_VERSION=${{ github.event.inputs.generation_tag }}
             ROK4TOOLS_VERSION=${{ github.event.inputs.tools_tag }}
+            ROK4CORECPP_VERSION=${{ github.event.inputs.corecpp_tag }}
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
