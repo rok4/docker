@@ -13,7 +13,7 @@ services:
       - ./viewer:/usr/share/nginx/html/viewer
 
   middle:
-    image: rok4/server:6.0.1
+    image: rok4/server:6.1.1
     depends_on:
       - storage
     environment:

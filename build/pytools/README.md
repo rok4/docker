@@ -85,7 +85,7 @@ Documentation complète de l'outil [ici](https://rok4.github.io/pytools/latest/#
 
 TMSIZER est un outil permettant de convertir des informations selon différents formats en accord avec un Tile Matrix Set en particulier. Les données en entrée peuvent être lues depuis un fichier, un objet ou l'entrée standard. Les données en sortie peuvent être écrites dans un fichier, un objet ou la sortie standard.
 
-Exemple d'appel :
+Exemples d'appel :
 
 ```bash
 docker run --rm \
@@ -93,6 +93,16 @@ docker run --rm \
     -v $PWD/output:/output \
     rok4/pytools \
     tmsizer -i /input/logs.txt --tms PM -io levels=15,14 -io layers=LAYER.NAME1,LAYER.NAME2,LAYER.NAME3 -if GETTILE_PARAMS -of HEATMAP -oo bbox=65000,6100000,665000,6500000 -oo dimensions=600x400 -o /output/heatmap.tif
+```
+
+Avec utilisation des aires prédéfinie et calage sur un niveau :
+
+```bash
+docker run --rm \
+    -v $PWD/input:/input:ro \
+    -v $PWD/output:/output \
+    rok4/pytools \
+    tmsizer -i /input/logs.txt --tms PM -io levels=15,14 -io layers=LAYER.NAME1,LAYER.NAME2,LAYER.NAME3 -if GETTILE_PARAMS -of HEATMAP -oo area=FXX -oo level=15 -o /output/heatmap.tif
 ```
 
 Documentation complète de l'outil [ici](https://rok4.github.io/pytools/latest/#tmsizer).
