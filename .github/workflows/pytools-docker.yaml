@@ -9,7 +9,11 @@ on:
       tilematrixsets_tag:
         description: 'Tile matrix sets tagged version'
         required: true
-        default: '4.3'
+        default: '4.4'
+      styles_tag:
+        description: 'Styles tagged version'
+        required: true
+        default: '4.4'
 
 jobs:
   push_to_registry:
@@ -38,6 +42,7 @@ jobs:
             rok4/pytools:${{ github.event.inputs.pytools_tag }}
           build-args: |
             ROK4TILEMATRIXSETS_VERSION=${{ github.event.inputs.tilematrixsets_tag }}
+            ROK4STYLES_VERSION=${{ github.event.inputs.styles_tag }}
             ROK4PYTOOLS_VERSION=${{ github.event.inputs.pytools_tag }}
 
       - name: Docker Hub Description
@@ -46,5 +51,5 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: rok4/pytools
-          short-description: 'Outils python de gestion du projet ROK4 : conversions, calcul de statistiques...'
+          short-description: 'Outils python du projet ROK4 : calcul de pyramide, conversions, calcul de statistiques...'
           readme-filepath: build/pytools/README.md

@@ -17,6 +17,7 @@
         "email": "${SERVICE_ELECTRONICMAILADDRESS}"
     },
     "crs_equivalences": "/etc/rok4/equals_crs.json",
+    "default_style": "normal",
     "admin": {
         "enabled": ${SERVICE_ADMIN_SUPPORT}
     },
