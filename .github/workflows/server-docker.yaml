@@ -40,7 +40,7 @@ jobs:
         with:
           context: build/server/
           push: true
-          file: build/server/ubuntu-2004.Dockerfile
+          file: build/server/ubuntu-2204.Dockerfile
           tags: |
             rok4/server:${{ github.event.inputs.server_tag }}
           build-args: |
