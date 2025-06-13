@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-RUN apt update && apt -y install curl procps wget gdal-bin
+RUN apt update && apt -y install curl procps wget gdal-bin jq
 
 ARG ROK4TILEMATRIXSETS_VERSION=4.4
 ENV ROK4TILEMATRIXSETS_VERSION=$ROK4TILEMATRIXSETS_VERSION

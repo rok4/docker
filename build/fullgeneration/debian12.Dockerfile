@@ -1,6 +1,6 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
-RUN apt update && apt -y install curl procps wget gdal-bin
+RUN apt update && apt -y install curl procps wget gdal-bin jq
 
 ARG ROK4TILEMATRIXSETS_VERSION=4.4
 ENV ROK4TILEMATRIXSETS_VERSION=$ROK4TILEMATRIXSETS_VERSION
@@ -13,11 +13,11 @@ RUN curl -L -o rok4-styles.deb  https://github.com/rok4/styles/releases/download
 
 ARG ROK4CORECPP_VERSION
 ENV ROK4CORECPP_VERSION=$ROK4CORECPP_VERSION
-RUN curl -L -o librok4-dev.deb https://github.com/rok4/core-cpp/releases/download/${ROK4CORECPP_VERSION}/librok4-ceph-${ROK4CORECPP_VERSION}-ubuntu-20.04-amd64.deb && apt install -y ./librok4-dev.deb
+RUN curl -L -o librok4-dev.deb https://github.com/rok4/core-cpp/releases/download/${ROK4CORECPP_VERSION}/librok4-ceph-${ROK4CORECPP_VERSION}-ubuntu-22.04-amd64.deb && apt install -y ./librok4-dev.deb
 
 ARG ROK4GENERATION_VERSION
 ENV ROK4GENERATION_VERSION=$ROK4GENERATION_VERSION
-RUN curl -L -o rok4-generation.deb  https://github.com/rok4/generation/releases/download/${ROK4GENERATION_VERSION}/rok4-generation-${ROK4GENERATION_VERSION}-ubuntu-20.04-amd64.deb && apt install -y ./rok4-generation.deb
+RUN curl -L -o rok4-generation.deb  https://github.com/rok4/generation/releases/download/${ROK4GENERATION_VERSION}/rok4-generation-${ROK4GENERATION_VERSION}-ubuntu-22.04-amd64.deb && apt install -y ./rok4-generation.deb
 
 ARG ROK4COREPERL_VERSION
 ENV ROK4COREPERL_VERSION=$ROK4COREPERL_VERSION

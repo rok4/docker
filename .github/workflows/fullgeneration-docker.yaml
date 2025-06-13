@@ -52,7 +52,7 @@ jobs:
         with:
           context: build/fullgeneration/
           push: true
-          file: build/fullgeneration/debian11.Dockerfile
+          file: build/fullgeneration/debian12.Dockerfile
           tags: |
             rok4/fullgeneration:${{ github.event.inputs.output_image_tag }}
           build-args: |
