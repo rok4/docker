@@ -1,4 +1,4 @@
-FROM python:3.10-slim-bullseye
+FROM python:3.10-slim-bookworm
 
 RUN apt update && apt -y install gdal-bin libgdal-dev curl g++
 
