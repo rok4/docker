@@ -16,7 +16,7 @@ on:
       tilematrixsets_tag:
         description: 'Tile matrix sets version'
         required: true
-        default: '4.4'
+        default: '4.6'
 
 jobs:
   push_to_registry:

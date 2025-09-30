@@ -36,7 +36,7 @@ jobs:
         with:
           context: build/generation/
           push: true
-          file: build/generation/debian11.Dockerfile
+          file: build/generation/debian12.Dockerfile
           tags: |
             rok4/generation:${{ github.event.inputs.generation_tag }}
           build-args: |

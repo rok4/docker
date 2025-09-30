@@ -13,7 +13,7 @@ on:
       styles_tag:
         description: 'Styles tagged version'
         required: true
-        default: '4.4'
+        default: '4.6'
 
 jobs:
   push_to_registry:

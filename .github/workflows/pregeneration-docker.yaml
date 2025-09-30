@@ -12,7 +12,7 @@ on:
       tilematrixsets_tag:
         description: 'Tile matrix sets tagged version'
         required: true
-        default: '4.4'
+        default: '4.6'
 
 jobs:
   push_to_registry:
@@ -36,7 +36,7 @@ jobs:
         with:
           context: build/pregeneration/
           push: true
-          file: build/pregeneration/debian11.Dockerfile
+          file: build/pregeneration/debian12.Dockerfile
           tags: |
             rok4/pregeneration:${{ github.event.inputs.pregeneration_tag }}
           build-args: |
