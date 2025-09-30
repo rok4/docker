@@ -2,7 +2,7 @@ FROM python:3.10-slim-bullseye
 
 RUN apt update && apt -y install gdal-bin libgdal-dev curl g++
 
-ARG ROK4TILEMATRIXSETS_VERSION=4.4
+ARG ROK4TILEMATRIXSETS_VERSION=4.6
 ENV ROK4TILEMATRIXSETS_VERSION=$ROK4TILEMATRIXSETS_VERSION
 RUN curl -L -o rok4-tilematrixsets.deb  https://github.com/rok4/tilematrixsets/releases/download/${ROK4TILEMATRIXSETS_VERSION}/rok4-tilematrixsets-${ROK4TILEMATRIXSETS_VERSION}-linux-all.deb && apt install ./rok4-tilematrixsets.deb
 ENV ROK4_TMS_DIRECTORY=/usr/share/rok4/tilematrixsets
