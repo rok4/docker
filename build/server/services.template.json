@@ -1,105 +1,104 @@
 {
-    "provider": "${SERVICE_PROVIDERNAME}",
-    "site": "${SERVICE_PROVIDERSITE}",
-    "fee": "${SERVICE_FEE}",
-    "access_constraint": "${SERVICE_ACCESSCONSTRAINT}",
-    "contact": {
-        "name": "${SERVICE_INDIVIDUALNAME}",
-        "position": "${SERVICE_INDIVIDUALPOSITION}",
-        "voice": "${SERVICE_VOICE}",
-        "facsimile": "${SERVICE_FACSIMILE}",
-        "address_type": "${SERVICE_ADDRESSTYPE}",
-        "delivery_point": "${SERVICE_DELIVERYPOINT}",
-        "city": "${SERVICE_CITY}",
-        "administrative_area": "${SERVICE_ADMINISTRATIVEAREA}",
-        "post_code": "${SERVICE_POSTCODE}",
-        "country": "${SERVICE_COUNTRY}",
-        "email": "${SERVICE_ELECTRONICMAILADDRESS}"
+    "enabled": true,
+    "global": {
+        "provider": "${SERVICE_PROVIDERNAME}",
+        "site": "${SERVICE_PROVIDERSITE}",
+        "fee": "${SERVICE_FEE}",
+        "access_constraint": "${SERVICE_ACCESSCONSTRAINT}",
+        "contact": {
+            "name": "${SERVICE_INDIVIDUALNAME}",
+            "position": "${SERVICE_INDIVIDUALPOSITION}",
+            "voice": "${SERVICE_VOICE}",
+            "facsimile": "${SERVICE_FACSIMILE}",
+            "address_type": "${SERVICE_ADDRESSTYPE}",
+            "delivery_point": "${SERVICE_DELIVERYPOINT}",
+            "city": "${SERVICE_CITY}",
+            "administrative_area": "${SERVICE_ADMINISTRATIVEAREA}",
+            "post_code": "${SERVICE_POSTCODE}",
+            "country": "${SERVICE_COUNTRY}",
+            "email": "${SERVICE_ELECTRONICMAILADDRESS}"
+        },
+        "crs_equivalences": "/etc/rok4/equals_crs.json",
+        "default_style": "normal",
+        "inspire": false,
+        "map": {
+            "limits": {
+                "width": 5000,
+                "height": 5000,
+                "tile_x": 32,
+                "tile_y": 32,
+                "layers_count": 2
+            },
+            "formats": [
+                "image/jpeg",
+                "image/png",
+                "image/tiff",
+                "image/geotiff",
+                "image/x-bil;bits=32"
+            ],
+            "crs": [
+                "CRS:84",
+                "EPSG:3857",
+                "EPSG:4326"
+            ],
+            "reprojection": true
+        },
+        "tile": {
+            "reprojection": true
+        }
     },
-    "crs_equivalences": "/etc/rok4/equals_crs.json",
-    "default_style": "normal",
     "admin": {
         "enabled": ${SERVICE_ADMIN_SUPPORT}
     },
     "health": {
         "enabled": true
     },
-    "common": {
-        "enabled": ${SERVICE_COMMON_SUPPORT},
-        "endpoint_uri": "${SERVICE_COMMON_ENDPOINT}",
-        "root_path": "/common",
-        "title": "Service COMMON",
-        "abstract": "Ce service permet la découvertes des services assurés par ce serveur",
-        "keywords": [
-            "COMMON"
-        ]
-    },
     "wms": {
         "enabled": ${SERVICE_WMS_SUPPORT},
         "endpoint_uri": "${SERVICE_WMS_ENDPOINT}",
         "root_path": "/wms",
         "title": "Service de visualisation WMS",
-        "abstract": "Ce service permet la visulation de couches de données raster IGN au travers d'un flux WMS",
+        "abstract": "Ce service permet la visulation de couches de données raster au travers d'un flux WMS",
         "keywords": [
             "WMS"
         ],
-        "limits": {
-            "width": 5000,
-            "height": 5000,
-            "tile_x": 32,
-            "tile_y": 32,
-            "layers_count": 2
-        },
         "name": "WMS",
-        "formats": [
-            "image/jpeg",
-            "image/png",
-            "image/tiff",
-            "image/geotiff",
-            "image/x-bil;bits=32"
-        ],
-        "crs": [
-            "CRS:84",
-            "EPSG:3857",
-            "EPSG:4326"
-        ],
         "root_layer": {
             "title": "Couches WMS",
             "abstract": "Données servies en WMS"
-        },
-        "reprojection": true,
-        "inspire": false
+        }
     },
     "wmts": {
         "enabled": ${SERVICE_WMTS_SUPPORT},
         "endpoint_uri": "${SERVICE_WMTS_ENDPOINT}",
         "title": "Service de visualisation WMTS",
-        "abstract": "Ce service permet la visulation de couches de données raster IGN au travers d'un flux WMTS",
+        "abstract": "Ce service permet la visulation de couches de données raster au travers d'un flux WMTS",
         "keywords": [
             "WMTS"
         ],
-        "root_path": "/wmts",
-        "reprojection": true
+        "root_path": "/wmts"
     },
     "tms": {
         "enabled": ${SERVICE_TMS_SUPPORT},
         "endpoint_uri": "${SERVICE_TMS_ENDPOINT}",
         "root_path": "/tms",
         "title": "Service de visualisation TMS",
-        "abstract": "Ce service permet la visulation de couches de données raster IGN au travers d'un flux TMS",
+        "abstract": "Ce service permet la visulation de couches de données raster et vecteur au travers d'un flux TMS",
         "keywords": [
             "TMS"
         ]
     },
-    "tiles": {
-        "enabled": ${SERVICE_TILES_SUPPORT},
-        "endpoint_uri": "${SERVICE_TILES_ENDPOINT}",
-        "root_path": "/tiles",
-        "title": "Service de visualisation OGC API Tiles",
-        "abstract": "Ce service permet la visulation de couches de données raster IGN au travers d'un flux OGC API Tiles",
+    "ogcapi": {
+        "enabled": ${SERVICE_OGCAPI_SUPPORT},
+        "endpoint_uri": "${SERVICE_OGCAPI_ENDPOINT}",
+        "root_path": "/ogcapi",
+        "title": "Service de visualisation OGC API",
+        "abstract": "Ce service permet la visulation de couches de données raster et vecteur au travers de flux OGC API",
         "keywords": [
+            "OGC API Common",
             "OGC API Tiles"
         ],
-        "reprojection": true
+        "tiles": true,
+        "maps": true
     }
 }

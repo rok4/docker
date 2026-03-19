@@ -21,7 +21,7 @@ services:
       - SERVICE_WMTS_ENDPOINT=http://localhost:8082/data/wmts
       - SERVICE_WMS_ENDPOINT=http://localhost:8082/data/wms
       - SERVICE_TMS_ENDPOINT=http://localhost:8082/data/tms
-      - SERVICE_TILES_ENDPOINT=http://localhost:8082/data/tiles
+      - SERVICE_OGCAPI_ENDPOINT=http://localhost:8082/data/ogcapi
       - SERVICE_COMMON_ENDPOINT=http://localhost:8082/data/common
       - ROK4_S3_SECRETKEY=rok4S3storage
       - ROK4_S3_KEY=rok4

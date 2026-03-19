@@ -1,6 +1,6 @@
 # Stacks de diffusion
 
-Le serveur permet la diffusion des données conditionnées sous forme de pyramide raster ou vecteur selon les protocoles OGC Web Map Service, Web Map Tiled Service et API Tiles ou le protocole de l'OSGeo Tile Map Service.
+Le serveur permet la diffusion des données conditionnées sous forme de pyramide raster ou vecteur selon les protocoles OGC Web Map Service, Web Map Tiled Service et les API OGC Tiles et Maps ou le protocole de l'OSGeo Tile Map Service.
 
 La documentation complète est disponible [ici](https://rok4.github.io/server).
 
@@ -51,8 +51,8 @@ Liste des variables d'environnement injectées dans les fichiers de configuratio
   * SERVICE_TMS_ENDPOINT (`http://localhost/tms`)
   * SERVICE_WMS_SUPPORT (`true`)
   * SERVICE_WMS_ENDPOINT (`http://localhost/wms`)
-  * SERVICE_TILES_SUPPORT (`true`)
-  * SERVICE_OGCTILES_ENDPOINT (`http://localhost/tiles`)
+  * SERVICE_OGCAPI_SUPPORT (`true`)
+  * SERVICE_OGCAPI_ENDPOINT (`http://localhost/ogcapi`)
 
 
 Il est possible de surcharger chacune de ces valeurs de configuration via des variables d'environnement. Exemple :
@@ -92,7 +92,7 @@ services:
       - SERVICE_WMS_ENDPOINT=http://localhost/wms
       - SERVICE_TMS_ENDPOINT=http://localhost/tms
       - SERVICE_COMMON_ENDPOINT=http://localhost/common
-      - SERVICE_TILES_ENDPOINT=http://localhost/tiles
+      - SERVICE_OGCAPI_ENDPOINT=http://localhost/ogcapi
       - ROK4_S3_SECRETKEY=rok4S3storage
       - ROK4_S3_KEY=rok4
       - ROK4_S3_URL=http://storage:9000
@@ -150,7 +150,7 @@ Les capacités des 4 services rendus (WMS, WMTS, OGC API Tiles et TMS) sont disp
 * WMS : http://localhost/wms?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0
 * WMTS : http://localhost/wmts?SERVICE=WMTS&REQUEST=GetCapabilities&VERSION=1.0.0
 * TMS : http://localhost/tms/1.0.0
-* OGC API Tiles : http://localhost/tiles/collections
+* OGC API : http://localhost/ogcapi/
 
 On peut retrouver ces informations sur la route de l'API Common : http://localhost/common
 
