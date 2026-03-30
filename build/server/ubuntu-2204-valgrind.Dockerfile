@@ -27,7 +27,7 @@ ENV SERVER_LAYERS="/etc/rok4/layers.txt" SERVER_STYLES="/usr/share/rok4/styles" 
 ENV SERVICE_TITLE="WMS/WMTS/TMS server"  SERVICE_ABSTRACT="This server provide WMS, WMTS and TMS raster and vector data broadcast"  SERVICE_PROVIDERNAME="ROK4 Team" SERVICE_PROVIDERSITE="https://github.com/rok4/documentation" SERVICE_KEYWORDS="WMS,WMTS,TMS,API Tiles,Docker"
 ENV SERVICE_FEE="none" SERVICE_ACCESSCONSTRAINT="none"
 ENV SERVICE_ADMIN_SUPPORT="true" SERVICE_COMMON_SUPPORT="true" SERVICE_WMTS_SUPPORT="true" SERVICE_TMS_SUPPORT="true" SERVICE_WMS_SUPPORT="true" SERVICE_OGCAPI_SUPPORT="true"
-ENV SERVICE_COMMON_ENDPOINT="http://localhost/common" SERVICE_WMTS_ENDPOINT="http://localhost/wmts" SERVICE_TMS_ENDPOINT="http://localhost/tms" SERVICE_WMS_ENDPOINT="http://localhost/wms" SERVICE_OGCAPI_ENDPOINT="http://localhost/ogcapi"
+ENV SERVICE_ADMIN_SECRET="" SERVICE_WMTS_ENDPOINT="http://localhost/wmts" SERVICE_TMS_ENDPOINT="http://localhost/tms" SERVICE_WMS_ENDPOINT="http://localhost/wms" SERVICE_OGCAPI_ENDPOINT="http://localhost/ogcapi"
 
 
 WORKDIR /
