@@ -1,5 +1,6 @@
 COMPONENT=$1
 VERSION=$2
+PREFIX=$3
 
 if [[ -z $COMPONENT ]]; then
     echo "ERROR: component not provided"
@@ -8,7 +9,7 @@ fi
 
 
 if [[ $COMPONENT == "help" ]]; then
-    echo "Usage: docker run [...] rok4/builder:<os> server|generation|pregeneration|tools|core-perl|tilematrixsets|styles|tippecanoe <version>"
+    echo "Usage: docker run [...] rok4/builder:<os> core-cpp|server|generation|pregeneration|tools|core-perl|tilematrixsets|styles|tippecanoe <version>"
     exit 0
 fi
 
@@ -17,15 +18,35 @@ if [[ -z $VERSION ]]; then
     exit 1
 fi
 
+if [[ -z $PREFIX ]]; then
+    PREFIX="/"
+fi
+
 mkdir -p /sources
-if [[ $COMPONENT == "server" ]]; then
+
+
+if [[ $COMPONENT == "core-cpp" ]]; then
+
+    if [[ ! -d /sources/core-cpp/ ]]; then
+        cd /sources
+        git clone --branch $VERSION --depth 1 --recursive https://github.com/rok4/core-cpp
+    fi
+    mkdir -p /build && cd /build
+    cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DUNITTEST_ENABLED=0 -DDOC_ENABLED=0 -DCEPH_ENABLED=1 -DCPACK_SYSTEM_NAME=$OS_BUILDER -DBUILD_VERSION=$VERSION /sources/core-cpp/
+    make
+    make package
+    mv librok4-* /artefacts/
+
+elif [[ $COMPONENT == "server" ]]; then
 
     if [[ ! -d /sources/server/ ]]; then
         cd /sources
         git clone --branch $VERSION --depth 1 --recursive https://github.com/rok4/server
     fi
-    cd mkdir -p /build && /build
-    cmake -DOBJECT_ENABLED=1 -DCMAKE_INSTALL_PREFIX=/ -DCPACK_SYSTEM_NAME=$OS_BUILDER -DBUILD_VERSION=$VERSION /sources/server/
+    echo "Install librok4"
+    apt install /artefacts/librok4-ceph-3.0.0-ubuntu-24.04-amd64.deb
+    mkdir -p /build && cd /build
+    cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DUNITTEST_ENABLED=0 -DDOC_ENABLED=0 -DCPACK_SYSTEM_NAME=$OS_BUILDER -DBUILD_VERSION=$VERSION /sources/server/
     make
     make package
     mv rok4-server-* /artefacts
@@ -36,8 +57,10 @@ elif [[ $COMPONENT == "generation" ]]; then
         cd /sources
         git clone --branch $VERSION --depth 1 --recursive https://github.com/rok4/generation
     fi
-    cd mkdir -p /build && /build
-    cmake -DOBJECT_ENABLED=1 -DCMAKE_INSTALL_PREFIX=/ -DCPACK_SYSTEM_NAME=$OS_BUILDER -DBUILD_VERSION=$VERSION /sources/generation/
+    echo "Install librok4"
+    apt install /artefacts/librok4-ceph-3.0.0-ubuntu-24.04-amd64.deb
+    cd mkdir -p /build && cd /build
+    cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DCPACK_SYSTEM_NAME=$OS_BUILDER -DBUILD_VERSION=$VERSION /sources/generation/
     make
     make package
     mv rok4-generation-* /artefacts
@@ -51,7 +74,7 @@ elif [[ $COMPONENT == "pregeneration" ]]; then
 
     cd mkdir -p /rok4-pregeneration-$VERSION-linux-all
     cd /sources/pregeneration/
-    perl Makefile.PL DESTDIR=/rok4-pregeneration-$VERSION-linux-all INSTALL_BASE=/ VERSION=$VERSION
+    perl Makefile.PL DESTDIR=/rok4-pregeneration-$VERSION-linux-all INSTALL_BASE=$PREFIX VERSION=$VERSION
     make
     make injectversion
     make pure_install
@@ -82,7 +105,7 @@ elif [[ $COMPONENT == "tools" ]]; then
 
     cd mkdir -p /rok4-tools-$VERSION-linux-all
     cd /sources/tools/
-    perl Makefile.PL DESTDIR=/rok4-tools-$VERSION-linux-all INSTALL_BASE=/ VERSION=$VERSION
+    perl Makefile.PL DESTDIR=/rok4-tools-$VERSION-linux-all INSTALL_BASE=$PREFIX VERSION=$VERSION
     make
     make injectversion
     make pure_install
@@ -113,7 +136,7 @@ elif [[ $COMPONENT == "core-perl" ]]; then
 
     cd mkdir -p /librok4-core-perl-$VERSION-linux-all
     cd /sources/core-perl/
-    perl Makefile.PL DESTDIR=/librok4-core-perl-$VERSION-linux-all INSTALL_BASE=/ VERSION=$VERSION
+    perl Makefile.PL DESTDIR=/librok4-core-perl-$VERSION-linux-all INSTALL_BASE=$PREFIX VERSION=$VERSION
     make
     make pure_install
 
@@ -144,7 +167,7 @@ elif [[ $COMPONENT == "tilematrixsets" ]]; then
     mkdir -p /rok4-tilematrixsets-$VERSION-linux-all/usr/share/rok4/tilematrixsets
     cp /sources/tilematrixsets/*.json /rok4-tilematrixsets-$VERSION-linux-all/usr/share/rok4/tilematrixsets/
 
-    tar cvfz /artefacts/rok4-tilematrixsets-$VERSION-linux-all.tar.gz -C / rok4-tilematrixsets-$VERSION-linux-all
+    tar cvfz /artefacts/rok4-tilematrixsets-$VERSION-linux-all.tar.gz -C $PREFIX rok4-tilematrixsets-$VERSION-linux-all
 
     if [[ $OS_BUILDER == "debian11" || $OS_BUILDER == "debian12" ]]; then
         cd /rok4-tilematrixsets-$VERSION-linux-all/
@@ -170,7 +193,7 @@ elif [[ $COMPONENT == "styles" ]]; then
     mkdir -p /rok4-styles-$VERSION-linux-all/etc/rok4/styles
     cp /sources/styles/*.json /rok4-styles-$VERSION-linux-all/etc/rok4/styles/
 
-    tar cvfz /artefacts/rok4-styles-$VERSION-linux-all.tar.gz -C / rok4-styles-$VERSION-linux-all
+    tar cvfz /artefacts/rok4-styles-$VERSION-linux-all.tar.gz -C $PREFIX rok4-styles-$VERSION-linux-all
 
     if [[ $OS_BUILDER == "debian11" || $OS_BUILDER == "debian12" ]]; then
         cd /rok4-styles-$VERSION-linux-all/
