@@ -2,3 +2,5 @@ run/datasets/downloads
 run/datasets/scripts
 run/datasets/pyramids
 run/datasets/common
+build/builder/build-*
+build/builder/artefacts
